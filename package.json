@@ -1,16 +1,16 @@
 {
-  "name": "moonshine",
+  "name": "moonshine-grs",
   "version": "0.2.0",
-  "description": "An open-source, non-custodial, Bitcoin/Litecoin Electrum wallet for iOS & Android.",
+  "description": "An open-source, non-custodial, Groestlcoin Electrum wallet for iOS & Android.",
   "author": "Corey Phillips",
   "license": "MIT",
-  "homepage": "https://github.com/coreyphillips/moonshine",
+  "homepage": "https://github.com/Groesltcoin/moonshine",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/coreyphillips/moonshine.git"
+    "url": "git+https://github.com/Groesltcoin/moonshine.git"
   },
   "bugs": {
-    "url": "https://github.com/coreyphillips/moonshine/issues"
+    "url": "https://github.com/Groesltcoin/moonshine/issues"
   },
   "scripts": {
     "android": "react-native run-android",
