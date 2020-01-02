@@ -1824,11 +1824,6 @@ bindings@^1.3.0, bindings@^1.5.0:
   dependencies:
     file-uri-to-path "1.0.0"
 
-bip174@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/bip174/-/bip174-1.0.1.tgz#858a587f9529e22ee9b0572fd884e5783696824d"
-  integrity sha512-Mq2aFs1TdMfxBpYPg7uzjhsiXbAtoVq44TNjEWtvuZBiBgc3m7+n55orYMtTAxdg7jWbL4DtH0MKocJER4xERQ==
-
 bip21@^2.0.2:
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/bip21/-/bip21-2.0.2.tgz#fa3434a10ed349e37335d2ae7b277e7fd30ea149"
@@ -1848,6 +1843,18 @@ bip32@^2.0.4:
     tiny-secp256k1 "^1.1.0"
     typeforce "^1.11.5"
     wif "^2.0.6"
+
+"bip32grs@https://github.com/Groestlcoin/bip32grs":
+  version "2.0.4"
+  resolved "https://github.com/Groestlcoin/bip32grs#ec3c005f2a2703ce61588b951b5251c8894e897a"
+  dependencies:
+    "@types/node" "10.12.18"
+    bs58grscheck "https://github.com/Groestlcoin/bs58grscheck.git"
+    create-hash "^1.2.0"
+    create-hmac "^1.1.7"
+    tiny-secp256k1 "^1.1.0"
+    typeforce "^1.11.5"
+    wifgrs "https://github.com/Groestlcoin/wifgrs.git"
 
 bip39@^3.0.2:
   version "3.0.2"
@@ -1878,27 +1885,26 @@ bitcoin-units@^0.3.0:
   dependencies:
     big.js "^5.2.2"
 
-bitcoinjs-lib@^5.1.6:
-  version "5.1.6"
-  resolved "https://registry.yarnpkg.com/bitcoinjs-lib/-/bitcoinjs-lib-5.1.6.tgz#0169890fd1e09e5eb335aadd62a61e1fbdf48b46"
-  integrity sha512-NgvnA8XXUuzpuBnVs1plzZvVOYsuont4KPzaGcVIwjktYQbCk1hUkXnt4wujIOBscNsXuu+plVbPYvtMosZI/w==
+"bitcoinjs-lib@https://github.com/Groestlcoin/groestlcoinjs-lib#v4.0.3":
+  version "4.0.3"
+  resolved "https://github.com/Groestlcoin/groestlcoinjs-lib#8e3e778126c796f25acc9886360e9e1983488dda"
   dependencies:
-    "@types/node" "10.12.18"
     bech32 "^1.1.2"
-    bip174 "^1.0.1"
-    bip32 "^2.0.4"
+    bip32grs "https://github.com/Groestlcoin/bip32grs"
     bip66 "^1.1.0"
     bitcoin-ops "^1.4.0"
-    bs58check "^2.0.0"
+    bs58grscheck "https://github.com/Groestlcoin/bs58grscheck.git"
     create-hash "^1.1.0"
     create-hmac "^1.1.3"
+    groestl-hash-js "https://github.com/Groestlcoin/groestl-hash-js.git"
     merkle-lib "^2.0.10"
     pushdata-bitcoin "^1.0.1"
     randombytes "^2.0.1"
-    tiny-secp256k1 "^1.1.1"
+    safe-buffer "^5.1.1"
+    tiny-secp256k1 "^1.0.0"
     typeforce "^1.11.3"
     varuint-bitcoin "^1.0.4"
-    wif "^2.0.1"
+    wifgrs "https://github.com/Groestlcoin/wifgrs"
 
 bitcoinjs-message@^2.1.0:
   version "2.1.0"
@@ -2036,13 +2042,22 @@ bs58@^4.0.0:
   dependencies:
     base-x "^3.0.2"
 
-bs58check@<3.0.0, bs58check@^2.0.0, bs58check@^2.1.1, bs58check@^2.1.2:
+bs58check@<3.0.0, bs58check@^2.1.1, bs58check@^2.1.2:
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/bs58check/-/bs58check-2.1.2.tgz#53b018291228d82a5aa08e7d796fdafda54aebfc"
   integrity sha512-0TS1jicxdU09dwJMNZtVAfzPi6Q6QeN0pM1Fkzrjn+XYHvzMKPU3pHVpva+769iNVSfIYWf7LJ6WR+BuuMf8cA==
   dependencies:
     bs58 "^4.0.0"
     create-hash "^1.1.0"
+    safe-buffer "^5.1.2"
+
+"bs58grscheck@https://github.com/Groestlcoin/bs58grscheck.git":
+  version "2.1.2"
+  resolved "https://github.com/Groestlcoin/bs58grscheck.git#020feec2b3153aeb278596ea70ce3579a37f4e21"
+  dependencies:
+    bs58 "^4.0.0"
+    create-hash "^1.1.0"
+    groestl-hash-js "https://github.com/Groestlcoin/groestl-hash-js.git"
     safe-buffer "^5.1.2"
 
 bser@^2.0.0:
@@ -3719,6 +3734,10 @@ graceful-fs@^4.1.11, graceful-fs@^4.1.15, graceful-fs@^4.1.2, graceful-fs@^4.1.3
   version "4.2.2"
   resolved "https://registry.yarnpkg.com/graceful-fs/-/graceful-fs-4.2.2.tgz#6f0952605d0140c1cfdb138ed005775b92d67b02"
   integrity sha512-IItsdsea19BoLC7ELy13q1iJFNmd7ofZH5+X/pJr90/nRoPEX0DJo1dHDbgtYWOhJhcCgMDTOw84RZ72q6lB+Q==
+
+"groestl-hash-js@https://github.com/Groestlcoin/groestl-hash-js.git":
+  version "1.0.0"
+  resolved "https://github.com/Groestlcoin/groestl-hash-js.git#ef6a04f1c4d2f0448f0882b5f213ef7a0659baee"
 
 growly@^1.3.0:
   version "1.3.0"
@@ -7675,7 +7694,7 @@ time-stamp@^1.0.0:
   resolved "https://registry.yarnpkg.com/time-stamp/-/time-stamp-1.1.0.tgz#764a5a11af50561921b133f3b44e618687e0f5c3"
   integrity sha1-dkpaEa9QVhkhsTPztE5hhofg9cM=
 
-tiny-secp256k1@^1.1.0, tiny-secp256k1@^1.1.1:
+tiny-secp256k1@^1.0.0, tiny-secp256k1@^1.1.0:
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/tiny-secp256k1/-/tiny-secp256k1-1.1.3.tgz#e93b1e1bf62e9bd1ad3ab24af27ff6127ce0e077"
   integrity sha512-ZpobrhOtHP98VYEN51IYQH1YcrbFpnxFhI6ceWa3OEbJn7eHvSd8YFjGPxbedGCy7PNYU1v/+BRsdvyr5uRd4g==
@@ -8080,12 +8099,27 @@ wide-align@^1.1.0:
   dependencies:
     string-width "^1.0.2 || 2"
 
-wif@^2.0.1, wif@^2.0.6:
+wif@^2.0.6:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/wif/-/wif-2.0.6.tgz#08d3f52056c66679299726fade0d432ae74b4704"
   integrity sha1-CNP1IFbGZnkplyb63g1DKudLRwQ=
   dependencies:
     bs58check "<3.0.0"
+
+"wifgrs@https://github.com/Groestlcoin/wifgrs":
+  version "2.0.6"
+  resolved "https://github.com/Groestlcoin/wifgrs#e70425d665a090c8378344636f40cbdb45b735d3"
+  dependencies:
+    bs58grscheck "https://github.com/Groestlcoin/bs58grscheck.git"
+    safe-buffer "^5.1.1"
+
+"wifgrs@https://github.com/Groestlcoin/wifgrs.git":
+  version "2.0.6"
+  uid e70425d665a090c8378344636f40cbdb45b735d3
+  resolved "https://github.com/Groestlcoin/wifgrs.git#e70425d665a090c8378344636f40cbdb45b735d3"
+  dependencies:
+    bs58grscheck "https://github.com/Groestlcoin/bs58grscheck.git"
+    safe-buffer "^5.1.1"
 
 window-or-global@^1.0.1:
   version "1.0.1"
