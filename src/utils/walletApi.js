@@ -410,6 +410,16 @@ const fallbackBroadcastTransaction = async ({ rawTx = "", selectedCrypto = "bitc
 				response = await response.json();
 				response = response.status === "success" ? response.data.txid : "";
 				break;
+			case "groestlcoin":
+				response = await fetch(`https://groestlsight.groestlcoin.org/api/tx/send`, fetchData("POST", { tx_hex: rawTx }));
+				response = await response.json();
+				response = response.status === "success" ? response.data.txid : "";
+				break;
+			case "groestlcoinTestnet":
+				response = await fetch(`https://groestlsight-test.groestlcoin.org/api/tx/send`, fetchData("POST", { tx_hex: rawTx }));
+				response = await response.json();
+				response = response.status === "success" ? response.data.txid : "";
+				break;
 		}
 		if (response !== "") return { error: false, data: response };
 		return { error: true, data: "" };

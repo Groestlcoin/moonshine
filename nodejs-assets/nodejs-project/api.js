@@ -1,23 +1,29 @@
 class API {
 	constructor() {
-		this.coin = "bitcoin";
+		this.coin = "groestlcoin";
 		this.mainClient = {
 			bitcoin: false,
 			litecoin: false,
+			groestlcoin: false, 
 			bitcoinTestnet: false,
-			litecoinTestnet: false
+			litecoinTestnet: false,
+			groestlcoinTestnet: false
 		};
 		this.peer = {
 			bitcoin: {},
 			litecoin: {},
+			groestlcoin: {}, 
 			bitcoinTestnet: {},
-			litecoinTestnet: {}
+			litecoinTestnet: {},
+			groestlcoinTestnet: {}
 		};
 		this.peers = {
 			bitcoin: [],
 			litecoin: [],
 			bitcoinTestnet: [],
-			litecoinTestnet: []
+			litecoinTestnet: [],
+			groestlcoin: [],
+			groestlcoinTestnet: [] 
 		};
 	}
 

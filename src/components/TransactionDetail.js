@@ -126,6 +126,8 @@ class TransactionDetail extends PureComponent {
 		if (selectedCrypto === "bitcoinTestnet") url = `https://blockstream.info/testnet/tx/${txid}`;
 		if (selectedCrypto === "litecoin") url = `https://chain.so/tx/LTC/${txid}`;
 		if (selectedCrypto === "litecoinTestnet") url = `https://chain.so/tx/LTCTEST/${txid}`;
+		if (selectedCrypto === "groestlcoin") url = `https://chainz.cryptoid.info/grs/tx.dws?${txid}`;
+		if (selectedCrypto === "groestlcoinTestnet") url = `https://chainz.cryptoid.info/grs-test/tx.dws?${txid}`;
 		openUrl(url);
 	};
 	
@@ -136,6 +138,8 @@ class TransactionDetail extends PureComponent {
 		if (selectedCrypto === "bitcoinTestnet") url = `https://blockstream.info/testnet/block-height/${block}`;
 		if (selectedCrypto === "litecoin") url = `https://chain.so/block/LTC/${block}`;
 		if (selectedCrypto === "litecoinTestnet") url = `https://chain.so/block/LTC/${block}`;
+		if (selectedCrypto === "groestlcoin") url = `https://chainz.cryptoid.info/grs/block.dws?${block}`;
+		if (selectedCrypto === "groestlcoinTestnet") url = `https://chainz.cryptoid.info/grs-test/block.dws?${block}`;
 		openUrl(url);
 	};
 	
@@ -146,6 +150,8 @@ class TransactionDetail extends PureComponent {
 		if (selectedCrypto === "bitcoinTestnet") url = `https://blockstream.info/testnet/address/${address}`;
 		if (selectedCrypto === "litecoin") url = `https://chain.so/address/LTC/${address}`;
 		if (selectedCrypto === "litecoinTestnet") url = `https://chain.so/address/LTCTEST/${address}`;
+		if (selectedCrypto === "groestlcoin") url = `https://chainz.cryptoid.info/grs/address.dws?${address}`;
+		if (selectedCrypto === "groestlcoinTestnet") url = `https://chainz.cryptoid.info/grs-test/address.dws?${address}`;
 		openUrl(url);
 	};
 	
@@ -164,6 +170,12 @@ class TransactionDetail extends PureComponent {
 				break;
 			case "litecoinTestnet":
 				url = `https://chain.so/tx/LTCTEST/${tx}`;
+				break;
+			case "groestlcoin":
+				url = `https://chainz.cryptoid.info/grs/tx.dws?${tx}`;
+				break;
+			case "groestlcoinTestnet":
+				url = `https://chainz.cryptoid.info/grs-test/tx.dws?${tx}`;
 				break;
 			default:
 				return;

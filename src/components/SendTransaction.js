@@ -890,13 +890,13 @@ class SendTransaction extends Component {
 
 					<View style={[styles.row, { marginTop: 20, marginBottom: 1 }]}>
 						<View style={{ flex: 1.2 }}>
-							<Text style={styles.text}>Fee: {this.props.transaction.fee || this.props.transaction.recommendedFee}sat/B </Text>
+							<Text style={styles.text}>Fee: {this.props.transaction.fee || this.props.transaction.recommendedFee}gro/B </Text>
 						</View>
 						<View style={{ flex: 1 }}>
 							<Text style={[styles.text, { textAlign: "center" }]}>${fiatFeeLabel}</Text>
 						</View>
 						<View style={{ flex: 1 }}>
-							<Text style={[styles.text, { textAlign: "center" }]}>{cryptoFeeLabel} sats</Text>
+							<Text style={[styles.text, { textAlign: "center" }]}>{cryptoFeeLabel} gros</Text>
 						</View>
 					</View>
 					<View style={styles.sliderRow}>

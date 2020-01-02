@@ -233,7 +233,9 @@ class ElectrumTesting extends PureComponent<Props> {
 					{this.cryptoButton({ label: "BTCt", key: "bitcoinTestnet" })}
 					{this.cryptoButton({ label: "LTC", key: "litecoin" })}
 					{this.cryptoButton({ label: "LTCt", key: "litecoinTestnet" })}
-				
+					{this.cryptoButton({ label: "GRS", key: "groestlcoin" })}
+					{this.cryptoButton({ label: "GRSt", key: "groestlcoinTestnet" })}
+
 				</View>
 				<View style={styles.lowerContent}>
 					<ScrollView style={{ flex: 1, paddingTop: 10 }}>
