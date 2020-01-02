@@ -38,5 +38,21 @@
   "litecoinTestnet": [
     "electrum-ltc.bysh.me s51002 t51001",
     "electrum.ltc.xurious.com s51002 t51001"
+  ],
+  "groestlcoin": [
+    "electrum1.groestlcoin.org t50001 s50002",
+    "electrum2.groestlcoin.org t50001 s50002",
+    "electrum3.groestlcoin.org t50001 s50002",
+    "electrum4.groestlcoin.org t50001 s50002",
+    "electrum5.groestlcoin.org t50001 s50002",
+    "electrum6.groestlcoin.org t50001 s50002",
+    "electrum7.groestlcoin.org t50001 s50002",
+    "electrum8.groestlcoin.org t50001 s50002",
+    "electrum9.groestlcoin.org t50001 s50002",
+    "electrum10.groestlcoin.org t50001 s50002"
+  ],
+  "groestlcoinTestnet": [
+    "electrum-test1.groestlcoin.org t51001 s51002",
+    "electrum-test2.groestlcoin.org t51001 s51002"
   ]
 }
