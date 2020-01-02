@@ -1,19 +1,63 @@
 // https://en.bitcoin.it/wiki/List_of_address_prefixes
 const networks = {
-	bitcoin: {
-		messagePrefix: '\x18Bitcoin Signed Message:\n',
-		bech32: 'bc',
+	// bitcoin: {
+	// 	messagePrefix: '\x18Bitcoin Signed Message:\n',
+	// 	bech32: 'bc',
+	// 	bip32: {
+	// 		public: 0x0488b21e,
+	// 		private: 0x0488ade4
+	// 	},
+	// 	pubKeyHash: 0x00,
+	// 	scriptHash: 0x05,
+	// 	wif: 0x80
+	// },
+	// bitcoinTestnet: {
+	// 	messagePrefix: '\x18Bitcoin Signed Message:\n',
+	// 	bech32: 'tb',
+	// 	bip32: {
+	// 		public: 0x043587cf,
+	// 		private: 0x04358394
+	// 	},
+	// 	pubKeyHash: 0x6f,
+	// 	scriptHash: 0xc4,
+	// 	wif: 0xef
+	// },
+	// litecoin: {
+	// 	messagePrefix: '\x19Litecoin Signed Message:\n',
+	// 	bech32: 'ltc',
+	// 	bip32: {
+	// 		public: 0x019da462,
+	// 		private: 0x019d9cfe
+	// 	},
+	// 	pubKeyHash: 0x30,
+	// 	scriptHash: 0x32,
+	// 	wif: 0xb0
+	// },
+	// litecoinTestnet: {
+	// 	messagePrefix: '\x18Litecoin Signed Message:\n',
+	// 	bech32: 'tltc',
+	// 	bip32: {
+	// 		public: 0x0436f6e1,
+	// 		private: 0x0436ef7d
+	// 	},
+	// 	pubKeyHash: 0x6f,
+	// 	scriptHash: 0x3a,
+	// 	wif: 0xef
+	// },
+	groestlcoin: {
+		messagePrefix: '\x1CGroestlcoin Signed Message:\n',
+		bech32: 'grs',
 		bip32: {
 			public: 0x0488b21e,
 			private: 0x0488ade4
 		},
-		pubKeyHash: 0x00,
+		pubKeyHash: 0x24,
 		scriptHash: 0x05,
 		wif: 0x80
 	},
-	bitcoinTestnet: {
-		messagePrefix: '\x18Bitcoin Signed Message:\n',
-		bech32: 'tb',
+	groestlcoinTestnet: {
+		messagePrefix: '\x1CGroestlcoin Signed Message:\n',
+		bech32: 'tgrs',
 		bip32: {
 			public: 0x043587cf,
 			private: 0x04358394
@@ -22,28 +66,6 @@ const networks = {
 		scriptHash: 0xc4,
 		wif: 0xef
 	},
-	litecoin: {
-		messagePrefix: '\x19Litecoin Signed Message:\n',
-		bech32: 'ltc',
-		bip32: {
-			public: 0x019da462,
-			private: 0x019d9cfe
-		},
-		pubKeyHash: 0x30,
-		scriptHash: 0x32,
-		wif: 0xb0
-	},
-	litecoinTestnet: {
-		messagePrefix: '\x18Litecoin Signed Message:\n',
-		bech32: 'tltc',
-		bip32: {
-			public: 0x0436f6e1,
-			private: 0x0436ef7d
-		},
-		pubKeyHash: 0x6f,
-		scriptHash: 0x3a,
-		wif: 0xef
-	}
 };
 
 //Returns an array of all available coins from the networks object.
@@ -53,7 +75,9 @@ const supportsRbf = {
 	bitcoin: true,
 	bitcoinTestnet: true,
 	litecoin: false,
-	litecoinTestnet: false
+	litecoinTestnet: false,
+	groestlcoin: true,
+	groestlcoinTestnet: true
 };
 
 const zeroValueItems = {
@@ -61,6 +85,8 @@ const zeroValueItems = {
 	bitcoinTestnet: 0,
 	litecoin: 0,
 	litecoinTestnet: 0,
+	groestlcoin: 0,
+	groestlcoinTestnet: 0,
 	timestamp: null
 };
 
@@ -69,6 +95,8 @@ const arrayTypeItems = {
 	bitcoinTestnet: [],
 	litecoin: [],
 	litecoinTestnet: [],
+	groestlcoin: [],
+	groestlcoinTestnet: [],
 	timestamp: null
 };
 
@@ -77,6 +105,8 @@ const objectTypeItems = {
 	bitcoinTestnet: {},
 	litecoin: {},
 	litecoinTestnet: {},
+	groestlcoin: {},
+	groestlcoinTestnet: {},
 	timestamp: null
 };
 
@@ -100,13 +130,17 @@ const defaultWalletShape = {
 		bitcoin: "84",
 		bitcoinTestnet: "84",
 		litecoin: "84",
-		litecoinTestnet: "84"
+		litecoinTestnet: "84",
+		groestlcoin: "84",
+		groestlcoinTestnet: "84"
 	},
 	addressType: { //Accepts bech32, segwit, legacy
 		bitcoin: "bech32",
 		bitcoinTestnet: "bech32",
 		litecoin: "bech32",
-		litecoinTestnet: "bech32"
+		litecoinTestnet: "bech32",
+		groestlcoin: "bech32",
+		groestlcoinTestnet: "bech32"
 	},
 	rbfData: objectTypeItems
 };
@@ -121,6 +155,8 @@ const getCoinImage = (coin = "bitcoin") => {
 				return require(`../assets/bitcoin.png`);
 			case "litecoin":
 				return require(`../assets/litecoin.png`);
+			case "groestlcoin":
+				return require(`../assets/groestlcoin.png`)
 			default:
 				return require(`../assets/bitcoin.png`);
 		}
@@ -153,6 +189,14 @@ const getCoinData = ({ selectedCrypto = "bitcoin", cryptoUnit = "satoshi" }) => 
 				oshi = "lits";
 				acronym = cryptoUnit === "satoshi" ? "lits" : "LTC";
 				return { acronym, label: "Litecoin Testnet", crypto: "LTC", satoshi, oshi };
+			case "groestlcoin":
+				acronym = cryptoUnit === "satoshi" ? "gros" : "GRS";
+				satoshi = gitoshi = "gros";
+				return { acronym, label: "Groestlcoin", crypto: "GRS", satoshi, oshi };
+			case "groestlcoinTestnet":
+				acronym = cryptoUnit === "satoshi" ? "gros" : "GRS";
+				satoshi = oshi = "gros";
+				return { acronym, label: "Groestlcoin Testnet", crypto: "GRS", satoshi, oshi };
 			default:
 				acronym = cryptoUnit === "satoshi" ? "sats" : "BTC";
 				return { acronym, label: "Bitcoin", crypto: "BTC", satoshi, oshi };
