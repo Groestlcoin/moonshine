@@ -2,7 +2,7 @@
   "name": "moonshine-grs",
   "version": "0.2.0",
   "description": "An open-source, non-custodial, Groestlcoin Electrum wallet for iOS & Android.",
-  "author": "Corey Phillips",
+  "author": "Hash Engineering Solutions and Corey Phillips",
   "license": "MIT",
   "homepage": "https://github.com/Groesltcoin/moonshine",
   "repository": {
@@ -30,7 +30,7 @@
     "bip32": "^2.0.4",
     "bip39": "^3.0.2",
     "bitcoin-units": "^0.3.0",
-    "bitcoinjs-lib": "^5.1.6",
+    "bitcoinjs-lib": "https://github.com/Groestlcoin/groestlcoinjs-lib#v4.0.3",
     "bitcoinjs-message": "^2.1.0",
     "buffer": "^5.4.3",
     "crypto": "^1.0.1",
@@ -117,3 +117,4 @@
     "vm": "vm-browserify"
   }
 }
+ 
