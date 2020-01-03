@@ -111,8 +111,8 @@ class TransactionDetail extends PureComponent {
 						</TouchableOpacity>
 					</View>
 					<View style={[styles.row, { marginTop: 20 }]}>
-						<Button style={{ ...styles.button, backgroundColor: "#813fb1", width: "50%" }} text={"Cancel Transaction"} onPress={() => this.cancelTransaction(nextAvailableAddress)} />
-						<Button style={{ ...styles.button, backgroundColor: "#813fb1", width: "50%" }} text="Increase Fee" onPress={this.attemptRbf} />
+						<Button style={{ ...styles.button, backgroundColor: colors.darkPurple, width: "50%" }} text={"Cancel Transaction"} onPress={() => this.cancelTransaction(nextAvailableAddress)} />
+						<Button style={{ ...styles.button, backgroundColor: colors.darkPurple, width: "50%" }} text="Increase Fee" onPress={this.attemptRbf} />
 					</View>
 				</View>
 			);
@@ -540,7 +540,7 @@ class TransactionDetail extends PureComponent {
 						<View style={styles.separator} />
 						
 						{this.isActiveUtxo() &&
-						<Button style={{ ...styles.button, backgroundColor: isBlacklisted ? colors.red : "#813fb1" }} text={isBlacklisted ? "Whitelist UTXO" : "Blacklist UTXO"} onPress={this.toggleUtxoBlacklist} />}
+						<Button style={{ ...styles.button, backgroundColor: isBlacklisted ? colors.red : colors.darkPurple }} text={isBlacklisted ? "Whitelist UTXO" : "Blacklist UTXO"} onPress={this.toggleUtxoBlacklist} />}
 						
 					</View>
 				</ScrollView>

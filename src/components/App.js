@@ -1703,7 +1703,7 @@ export default class App extends Component {
 				<Animated.View style={[styles.upperContent, {flex: this.state.upperContentFlex}]}>
 					<LinearGradient
 						style={styles.linearGradient}
-						colors={["#8e45bf", "#7931ab", "#5e1993", "#59158e"]}
+						colors={[colors.lightPurple, colors.purple, colors.mediumPurple, colors.darkPurple]}
 						start={{x: 0.0, y: 0.0}} end={{x: 1.0, y: 1.0}}
 					>
 						

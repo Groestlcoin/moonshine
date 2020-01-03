@@ -862,7 +862,7 @@ class SendTransaction extends Component {
 								<Text style={styles.amountText}>{this.state.displayInCrypto ? `${getCoinData({ selectedCrypto, cryptoUnit: this.props.settings.cryptoUnit }).acronym}` : "USD"}</Text>
 							</View>
 						</TouchableOpacity>
-						<TouchableOpacity style={[styles.rightIconContainer, { backgroundColor: this.state.spendMaxAmount ? "#813fb1" : colors.white }]} onPress={this.onMaxPress}>
+						<TouchableOpacity style={[styles.rightIconContainer, { backgroundColor: this.state.spendMaxAmount ? colors.darkPurple : colors.white }]} onPress={this.onMaxPress}>
 							<Text style={[styles.amountText, { color: this.state.spendMaxAmount ? colors.white : colors.purple }]}>Max</Text>
 						</TouchableOpacity>
 					</View>
@@ -965,7 +965,7 @@ class SendTransaction extends Component {
 										<Button
 											title="Copy TxHex"
 											loading={this.state.generatingTxHex}
-											style={{ backgroundColor: "#813fb1" }}
+											style={{ backgroundColor: colors.darkPurple }}
 											onPress={async () => {
 												this.setState({ generatingTxHex: true });
 												let rawTx = await this.createTransaction();
@@ -980,7 +980,7 @@ class SendTransaction extends Component {
 												if (this.state.rawTx !== rawTx) this.setState({ rawTx });
 											}}
 										/>
-										<Button style={{ backgroundColor: "#813fb1" }} title="Send" onPress={this.sendTransaction} activeOpacity={0.6} />
+										<Button style={{ backgroundColor: colors.darkPurple }} title="Send" onPress={this.sendTransaction} activeOpacity={0.6} />
 									</View>
 								</View>
 							</View>
