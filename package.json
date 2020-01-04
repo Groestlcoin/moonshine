@@ -4,13 +4,13 @@
   "description": "An open-source, non-custodial, Groestlcoin Electrum wallet for iOS & Android.",
   "author": "Hash Engineering Solutions and Corey Phillips",
   "license": "MIT",
-  "homepage": "https://github.com/Groesltcoin/moonshine",
+  "homepage": "https://github.com/Groestlcoin/moonshine",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Groesltcoin/moonshine.git"
+    "url": "git+https://github.com/Groestlcoin/moonshine.git"
   },
   "bugs": {
-    "url": "https://github.com/Groesltcoin/moonshine/issues"
+    "url": "https://github.com/Groestlcoin/moonshine/issues"
   },
   "scripts": {
     "android": "react-native run-android",
