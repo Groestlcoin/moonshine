@@ -148,7 +148,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.kisswallet"
+        applicationId "org.groestlcoin.moonshine"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 33000
