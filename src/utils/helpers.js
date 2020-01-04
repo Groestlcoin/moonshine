@@ -534,7 +534,7 @@ const generateAddresses = async ({ addressAmount = 0, changeAddressAmount = 0, w
 		};
 		try {
 			const networkType = getNetworkType(selectedCrypto); //Returns mainnet or testnet
-			const networkValue = networkType === "testnet" ? 1 : 0; //Used to modify the derivation path accordingly
+			const networkValue = networkType === "testnet" ? 1 : 17; //Used to modify the derivation path accordingly
 			const network = networks[selectedCrypto]; //Returns the network object based on the selected crypto.
 			const keychainResult = await getKeychainValue({ key: wallet });
 			addressType = addressType.toLowerCase();
@@ -832,7 +832,7 @@ const verifyMessage = ({ message = "", address = "", signature = "", selectedCry
 const getBaseDerivationPath = ({ keyDerivationPath = "84", selectedCrypto = "bitcoin" }) => {
 	try {
 		const networkType = getNetworkType(selectedCrypto);
-		const networkValue = networkType === "testnet" ? "1" : "0";
+		const networkValue = networkType === "testnet" ? "1" : "17";
 		return `m/${keyDerivationPath}'/0'/0'/${networkValue}/0`;
 	} catch (e) {
 		return { error: true, data: e };
