@@ -1,7 +1,7 @@
 <img align="left" width="80" height="80" src="./src/assets/main_icon.png" alt="Moonshine Icon">
 
-# Moonshine
-Moonshine's alpha is available for testing on [iOS](https://testflight.apple.com/join/yTLqj9Xn) & [Android](https://play.google.com/store/apps/details?id=com.kisswallet)
+# GRS Moonshine
+GRS Moonshine's alpha is available for testing on [iOS](https://testflight.apple.com/join/yTLqj9Xn) & [Android](https://play.google.com/store/apps/details?id=org.groestlcoin.moonshine)
 
 <p style="align-items: center">
   <img src="./src/assets/screenshots/send_transaction.png" width="33%" alt="Send Transaction" />
@@ -9,14 +9,14 @@ Moonshine's alpha is available for testing on [iOS](https://testflight.apple.com
   <img src="./src/assets/screenshots/receive_transaction.png" width="33%" alt="Receive Transaction" />
 </p>
 
-> Moonshine is a homebrewed, open-source, non-custodial, Bitcoin/Litecoin Electrum wallet for iOS & Android.
+> GRS Moonshine is a homebrewed, open-source, non-custodial, Groestlcoin Electrum wallet for iOS & Android.
 
 CAUTION: **Caution:**
 This app is still heavily in development. Please use at your own risk.
 
-Built with React Native, Moonshine utilizes Electrum's JSON-RPC methods to interact with the Bitcoin/Litecoin network.
+Built with React Native, GRS Moonshine utilizes Electrum's JSON-RPC methods to interact with the Bitcoin/Litecoin network.
 
-Moonshine's intended use is as a hot wallet.
+GRS Moonshine's intended use is as a hot wallet.
 Meaning, your keys are only as safe as the device you install this wallet on.
 As with any hot wallet, please ensure that you keep only a small, responsible amount of Bitcoin/Litecoin on it at any given time.
 
@@ -28,9 +28,9 @@ If you are looking for secure cold storage solutions please consider purchasing 
         - To generate these files, please follow the instructions detailed in the README of Lightning Lab's Lightning App [here.](https://github.com/lightninglabs/lightning-app/tree/master/mobile)
     - Option 2 - Download pre-generated files:
         - If you do not wish to generate these files locally you can download them [here](https://github.com/coreyphillips/moonshine/releases/tag/v0.2.0-2) instead. However, I highly recommend you opt for option 1.
-2. Clone Moonshine and Install Dependencies:
+2. Clone GRS Moonshine and Install Dependencies:
    ```
-    git clone https://github.com/coreyphillips/moonshine
+    git clone https://github.com/Groestlcoin/moonshine
     cd moonshine
     yarn install
     ```
@@ -71,7 +71,7 @@ If you are looking for secure cold storage solutions please consider purchasing 
 
 ### Contributing
 
-1. Fork it (<https://github.com/coreyphillips/moonshine>)
+1. Fork it (<https://github.com/Groestlcoin/moonshine>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
@@ -90,7 +90,9 @@ Supported Derivation Paths: m/0' | 44' | 49' | 84' /0'/0'
 If you have any questions, feature requests, etc., please feel free to create an issue on [Github](https://github.com/coreyphillips/moonshine/issues), reach out to me on [Twitter](https://twitter.com/coreylphillips) or send an email to corey@ferrymanfin.com.
 
 ### Meta
+Groestlcoin fork created by Hash Engineering Solutions
 
+Original Moonshine Author:
 Corey Phillips – [@coreylphillips](https://twitter.com/coreylphillips)
 
 Distributed under the MIT license. See ``LICENSE`` for more information.
