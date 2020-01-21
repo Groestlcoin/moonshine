@@ -699,7 +699,7 @@ export default class App extends Component {
 			unifiedErrors: false // use unified error messages (default false)
 		};
 		const authenticate = () => {
-			TouchID.authenticate("To open Moonshine", optionalConfigObject)
+			TouchID.authenticate("To open GRS Moonshine", optionalConfigObject)
 				.then(() => {
 					//Hide the retry button on the Biometric Authentication view.
 					if (this.state.displayBiometricAuthenticationRetry !== false) this.setState({displayBiometricAuthenticationRetry: false});
