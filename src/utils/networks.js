@@ -134,6 +134,12 @@ const defaultWalletShape = {
 		groestlcoin: "84",
 		groestlcoinTestnet: "84"
 	},
+	coinTypePath: {
+		bitcoin: "0",
+		bitcoinTestnet: "1",
+		litecoin: "2",
+		litecoinTestnet: "1"
+	},
 	addressType: { //Accepts bech32, segwit, legacy
 		bitcoin: "bech32",
 		bitcoinTestnet: "bech32",

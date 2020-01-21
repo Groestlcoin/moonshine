@@ -25,7 +25,7 @@ interface DefaultModalComponent {
 }
 const _DefaultModal = ({ isVisible = false, onClose = () => null, style = {}, contentStyle = {}, type = "ScrollView", children = {} }: DefaultModalComponent) => {
 	
-	if (Platform.OS === "ios") useEffect(() => LayoutAnimation.easeInEaseOut());
+	//if (Platform.OS === "ios") useEffect(() => LayoutAnimation.easeInEaseOut());
 	
 	return (
 		<Modal
@@ -34,7 +34,7 @@ const _DefaultModal = ({ isVisible = false, onClose = () => null, style = {}, co
 			backdropOpacity={0.1}
 			propagateSwipe={true}
 		>
-			<View style={[styles.modalContainer, { ...style }]}>
+			<View style={[styles.modalContainer, style]}>
 				{type === "ScrollView" &&
 				<ScrollView  style={[styles.modalScrollView, { ...contentStyle }]}>
 					{children}
@@ -60,10 +60,9 @@ _DefaultModal.protoTypes = {
 
 const styles = StyleSheet.create({
 	modalContainer: {
-		flex: 1,
 		alignSelf: "center",
-		marginBottom: 80,
-		marginTop: 25
+		width: "100%",
+		height: Platform.OS === "ios" ? "80%" : "84%"
 	},
 	modalScrollView: {
 		flex: 1,
@@ -80,7 +79,8 @@ const DefaultModal = memo(
 	(prevProps, nextProps) => {
 		if (!prevProps || !nextProps) return true;
 		return (
-			nextProps.isVisible === prevProps.isVisible
+			nextProps.isVisible === prevProps.isVisible &&
+			nextProps.children === prevProps.children
 		);
 	}
 );

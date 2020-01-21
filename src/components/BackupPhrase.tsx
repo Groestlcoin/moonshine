@@ -18,10 +18,10 @@ const ListItem = ({ id = 0, word = "" } = {}) => {
 };
 
 interface BackupPhraseComponent {
-	onPress: Function,
+	onPress: () => null,
 	phrase: [{id: number, word: string}]
 }
-const _BackupPhrase = ({ phrase = [], onPress = () => null }: BackupPhraseComponent) => {
+const _BackupPhrase = ({ phrase = [{ id: 0, word: "" }], onPress = () => null }: BackupPhraseComponent) => {
 	let p1, p2 = [];
 	try {
 		const halfway = Math.floor(phrase.length / 2);
@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
 		backgroundColor: colors.white,
 		borderRadius: 15,
 		alignSelf: "center",
-		marginBottom: 20
+		marginVertical: 20
 	},
 	listItem: {
 		flexDirection: "row"

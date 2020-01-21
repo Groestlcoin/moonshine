@@ -8,6 +8,7 @@ import * as Keychain from "react-native-keychain";
 //import { decode as atob } from 'base-64';
 import "../../shim";
 import { randomBytes } from "react-native-randombytes";
+import bitcoinUnits from 'bitcoin-units';
 
 const {
 	networks
@@ -24,7 +25,8 @@ const bip21 = require("bip21");
 const Url = require("url-parse");
 const {
 	availableCoins,
-	supportsRbf
+	supportsRbf,
+	defaultWalletShape
 } = require("../utils/networks");
 
 export const setItem = async (key, value) => {
@@ -175,8 +177,8 @@ const parsePaymentRequest = (data = "") => {
 						//bip21.decode will throw if anything other than "bitcoin" is passed to it.
 						//Replace any instance of "testnet" or "litecoin" with "bitcoin"
 						const coin = data.substr(0, data.indexOf(':'));
-						if (coin === "testnet") data = data.replace("testnet", "bitcoin");
-						if (coin === "litecoin") data = data.replace("litecoin", "bitcoin");
+						if (coin.toLowerCase().includes("testnet")) data = data.replace("testnet", "bitcoin");
+						if (coin.toLowerCase().includes("litecoin")) data = data.replace("litecoin", "bitcoin");
 						const result = bip21.decode(data);
 						const address = result.address;
 						validateAddressResult = validateAddress(address);
@@ -533,8 +535,7 @@ const generateAddresses = async ({ addressAmount = 0, changeAddressAmount = 0, w
 			resolve({error: true, data});
 		};
 		try {
-			const networkType = getNetworkType(selectedCrypto); //Returns mainnet or testnet
-			const networkValue = networkType === "testnet" ? 1 : 17; //Used to modify the derivation path accordingly
+			const coinTypePath = defaultWalletShape.coinTypePath[selectedCrypto];
 			const network = networks[selectedCrypto]; //Returns the network object based on the selected crypto.
 			const keychainResult = await getKeychainValue({ key: wallet });
 			addressType = addressType.toLowerCase();
@@ -560,7 +561,7 @@ const generateAddresses = async ({ addressAmount = 0, changeAddressAmount = 0, w
 			await Promise.all(
 				addressArray.map(async (item, i) => {
 					try {
-						const addressPath = `m/${keyDerivationPath}'/${networkValue}'/0'/0/${i + addressIndex}`;
+						const addressPath = `m/${keyDerivationPath}'/${coinTypePath}'/0'/0/${i + addressIndex}`;
 						const addressKeypair = root.derivePath(addressPath);
 						const address = await getAddress(addressKeypair, network, addressType);
 						//console.log(`Log: Created address ${i + addressIndex}: ${address}`);
@@ -570,7 +571,7 @@ const generateAddresses = async ({ addressAmount = 0, changeAddressAmount = 0, w
 				}),
 				changeAddressArray.map(async (item, i) => {
 					try {
-						const changeAddressPath = `m/${keyDerivationPath}'/${networkValue}'/0'/1/${i + changeAddressIndex}`;
+						const changeAddressPath = `m/${keyDerivationPath}'/${coinTypePath}'/0'/1/${i + changeAddressIndex}`;
 						const changeAddressKeypair = root.derivePath(changeAddressPath);
 						const address = await getAddress(changeAddressKeypair, network, addressType);
 						changeAddresses.push({ address, path: changeAddressPath });
@@ -648,6 +649,16 @@ const openUrl = (url = "") => {
 	} catch (e) {
 		console.log(e);
 	}
+};
+
+const openTxId = (txid = "", selectedCrypto = ""): void => {
+	if (!txid || !selectedCrypto) return;
+	let url = "";
+	if (selectedCrypto === "bitcoin") url = `https://blockstream.info/tx/${txid}`;
+	if (selectedCrypto === "bitcoinTestnet") url = `https://blockstream.info/testnet/tx/${txid}`;
+	if (selectedCrypto === "litecoin") url = `https://chain.so/tx/LTC/${txid}`;
+	if (selectedCrypto === "litecoinTestnet") url = `https://chain.so/tx/LTCTEST/${txid}`;
+	openUrl(url);
 };
 
 const pauseExecution = async (duration = 500) => {
@@ -831,9 +842,8 @@ const verifyMessage = ({ message = "", address = "", signature = "", selectedCry
 
 const getBaseDerivationPath = ({ keyDerivationPath = "84", selectedCrypto = "bitcoin" }) => {
 	try {
-		const networkType = getNetworkType(selectedCrypto);
-		const networkValue = networkType === "testnet" ? "1" : "17";
-		return `m/${keyDerivationPath}'/0'/0'/${networkValue}/0`;
+		const networkValue = networks.defaultWalletShape.coinTypePath[selectedCrypto];
+		return `m/${keyDerivationPath}'/${networkValue}'/0'/0/0`;
 	} catch (e) {
 		return { error: true, data: e };
 	}
@@ -876,6 +886,24 @@ const loginWithBitid = async ({ url = "", addressType = "bech32", keyDerivationP
 	}
 };
 
+const getFiatBalance = ({ balance = 0, exchangeRate = 0 } = {}) => {
+	try {
+		bitcoinUnits.setFiat("usd", exchangeRate);
+		const fiatBalance = bitcoinUnits(balance, "satoshi").to("usd").value().toFixed(2);
+		if (isNaN(fiatBalance)) return 0;
+		return Number(fiatBalance);
+	} catch (e) {
+		return 0;
+	}
+};
+
+const sortArrOfObjByKey = (arr = [], key = "", ascending = true) => {
+	try {
+		if (ascending) return arr.sort((a,b) => (a[key] - b[key]));
+		return arr.sort((a,b) => (b[key] - a[key]));
+	} catch (e) {return arr;}
+};
+
 module.exports = {
 	getItem,
 	setItem,
@@ -903,6 +931,7 @@ module.exports = {
 	getNetworkType,
 	capitalize,
 	openUrl,
+	openTxId,
 	pauseExecution,
 	vibrate,
 	shuffleArray,
@@ -915,5 +944,7 @@ module.exports = {
 	verifyMessage,
 	decodeURLParams,
 	getBaseDerivationPath,
-	loginWithBitid
+	loginWithBitid,
+	getFiatBalance,
+	sortArrOfObjByKey
 };
