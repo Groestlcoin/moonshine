@@ -147,6 +147,10 @@ class Settings extends PureComponent {
 
 			displayImportPhrase: false,
 			importPhraseOpacity: new Animated.Value(0),
+			
+			displayBroadcastTransaction: false,
+			broadcastTransactionOpacity: new Animated.Value(0),
+			
 			displaySignMessage: false,
 			signMessageOpacity: new Animated.Value(0),
 
@@ -523,7 +527,6 @@ class Settings extends PureComponent {
 				this.toggleBroadcastTransaction({ display: false });
 				return;
 			}
-			
 			this.props.onBack();
 		} catch (e) {}
 	};
@@ -589,6 +592,19 @@ class Settings extends PureComponent {
 
 		}
 	};
+	
+	toggleBroadcastTransaction = async ({ display = false }) => {
+		try {
+			const items = [
+				{ stateId: "displayBroadcastTransaction", opacityId: "broadcastTransactionOpacity", display },
+				{ stateId: "displaySettings", opacityId: "settingsOpacity", display: !display },
+			];
+			this.updateItems(items);
+		} catch (e) {
+		
+		}
+	};
+	
 	toggleSignMessage = async ({ display = false }) => {
 		try {
 			//Prevent user from accessing this view if addresses are still being generated.
