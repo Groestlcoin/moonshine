@@ -8115,7 +8115,6 @@ wif@^2.0.6:
 
 "wifgrs@https://github.com/Groestlcoin/wifgrs.git":
   version "2.0.6"
-  uid e70425d665a090c8378344636f40cbdb45b735d3
   resolved "https://github.com/Groestlcoin/wifgrs.git#e70425d665a090c8378344636f40cbdb45b735d3"
   dependencies:
     bs58grscheck "https://github.com/Groestlcoin/bs58grscheck.git"
