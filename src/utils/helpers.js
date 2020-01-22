@@ -658,6 +658,8 @@ const openTxId = (txid = "", selectedCrypto = ""): void => {
 	if (selectedCrypto === "bitcoinTestnet") url = `https://blockstream.info/testnet/tx/${txid}`;
 	if (selectedCrypto === "litecoin") url = `https://chain.so/tx/LTC/${txid}`;
 	if (selectedCrypto === "litecoinTestnet") url = `https://chain.so/tx/LTCTEST/${txid}`;
+	if (selectedCrypto === "groestlcoin") url = `https://chainz.cryptoid.info/grs/tx.dws?${txid}`;
+	if (selectedCrypto === "groestlcoinTestnet") url = `https://chainz.cryptoid.info/grs-test/tx.dws?${txid}`;
 	openUrl(url);
 };
 
