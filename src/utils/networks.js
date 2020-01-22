@@ -138,7 +138,9 @@ const defaultWalletShape = {
 		bitcoin: "0",
 		bitcoinTestnet: "1",
 		litecoin: "2",
-		litecoinTestnet: "1"
+		litecoinTestnet: "1",
+		groestlcoin: "17",
+		groestlcoinTestnet: "1"
 	},
 	addressType: { //Accepts bech32, segwit, legacy
 		bitcoin: "bech32",
