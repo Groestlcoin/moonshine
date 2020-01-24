@@ -785,7 +785,7 @@ export default class App extends Component {
 				{stateId: "displayLoading", opacityId: "loadingOpacity", display: true}
 			];
 			await this.updateItems(items);
-			await this.props.updateWallet({selectedCrypto: "bitcoin"});
+			await this.props.updateWallet({selectedCrypto: "groestlcoin"});
 			
 			//Figure out what type of security/authentication is allowed for settings.
 			let biometricsIsSupported = false;
