@@ -39,7 +39,7 @@ this.subscribeHeader = {};
 this.subscribeAddress = {};
 this.subscribedAddresses = [];
 this.notifiedAddresses = [];
-const bitcoin = require("bitcoinjs-lib");
+const bitcoin = require("groestlcoinjs-lib");
 const {
 	networks
 } = require("./networks");

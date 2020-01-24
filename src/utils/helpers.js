@@ -16,8 +16,8 @@ const {
 const {
 	walletHelpers
 } = require("./walletApi");
-const bitcoin = require("bitcoinjs-lib");
-const bitcoinMessage = require("bitcoinjs-message");
+const bitcoin = require("groestlcoinjs-lib");
+const bitcoinMessage = require("groestlcoinjs-message");
 const bip39 = require("bip39");
 const bip32 = require("bip32");
 const moment = require("moment");
@@ -816,7 +816,7 @@ const signMessage = async ({ message = "", addressType = "bech32", path = "m/84'
 		
 		let signature = "";
 		if (addressType === "legacy") {
-			signature = bitcoinMessage.sign(message, privateKey, keyPair);
+			signature = bitcoinMessage.sign(message, privateKey, keyPair, messagePrefix);
 		} else {
 			signature = bitcoinMessage.sign(message, privateKey, keyPair.compressed, messagePrefix, sigOptions);
 		}

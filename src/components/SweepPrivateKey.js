@@ -29,7 +29,7 @@ const {
 	getAddress,
 	validatePrivateKey
 } = require("../utils/helpers");
-const bitcoin = require("bitcoinjs-lib");
+const bitcoin = require("groestlcoinjs-lib");
 
 const {
 	createTransaction,
