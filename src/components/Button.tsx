@@ -41,7 +41,7 @@ const _Button = ({ title = "", onPress = () => null, text = "", activeOpacity = 
 			<TouchableOpacity onPress={_handleOnPress} activeOpacity={activeOpacity}>
 				<LinearGradient
 					style={[styles.container, { borderColor: color, opacity, ...style }]}
-					colors={["#8e45bf", "#7931ab", "#5e1993", "#59158e"]}
+					colors={[colors.lightPurple, colors.purple, colors.mediumPurple, colors.darkPurple]}
 					start={{x: 0.0, y: 0.0}} end={{x: 1.0, y: 1.0}}
 				>
 					{loading &&

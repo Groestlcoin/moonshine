@@ -34,7 +34,8 @@
       "purple": "#006593",
       "darkPurple": "#005E78",
       "mediumPurple": "#00618F",
-      "lightPurple": "#00A5BD"
+      "lightPurple": "#00A5BD",
+      "green": "#4f8e7b"
     },
     "donationAddresses": {
       "bitcoin": "bc1qm6knmtrk5jfyt57rwkm8j74kxskxyrl504tlc9",
