@@ -10,12 +10,16 @@ const {
 
 const updates = [
 	"Added coin control features to the Send Transaction view.",
-	"Updated Litecoin derivation paths.",
-	"Message signing now works for Litecoin."
+	"Updated Groestlcoin derivation paths.",
+	"Message signing now works for Groestlcoin."
 ];
 
+const showWelcome = false;
+
 const _Welcome = ({ children }) => {
-	
+	if(!showWelcome)
+		return;
+
 	if (Platform.OS === "ios") useEffect(() => LayoutAnimation.easeInEaseOut());
 	return (
 		<View style={styles.container}>
@@ -33,16 +37,10 @@ const _Welcome = ({ children }) => {
 				
 				<Text style={styles.text}>Never hesitate to reach out:</Text>
 				<Text
-					onPress={() => Linking.openURL("mailto:support@ferrymanfin.com?subject=Requesting Some Help").catch((e) => console.log(e))}
+					onPress={() => Linking.openURL("mailto:support@groestlcoin.org?subject=Requesting Some Help").catch((e) => console.log(e))}
 					style={[styles.text, { marginTop: 5 }]}
 				>
 					<Text style={styles.semiBoldText}>Email: </Text>support@ferrymanfin.com
-				</Text>
-				<Text
-					onPress={() => Linking.openURL("https://twitter.com/coreylphillips").catch((e) => console.log(e))}
-					style={[styles.text, { marginTop: 5 }]}
-				>
-					<Text style={styles.semiBoldText}>Twitter: </Text>@coreylphillips
 				</Text>
 			</View>
 		</View>
