@@ -40,7 +40,7 @@ const _Welcome = ({ children }) => {
 					onPress={() => Linking.openURL("mailto:support@groestlcoin.org?subject=Requesting Some Help").catch((e) => console.log(e))}
 					style={[styles.text, { marginTop: 5 }]}
 				>
-					<Text style={styles.semiBoldText}>Email: </Text>support@ferrymanfin.com
+					<Text style={styles.semiBoldText}>Email: </Text>support@groestlcoin.org
 				</Text>
 			</View>
 		</View>

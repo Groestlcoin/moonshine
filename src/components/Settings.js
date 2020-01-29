@@ -889,7 +889,7 @@ class Settings extends PureComponent {
 	
 	requestHelp = () => {
 		try {
-			Linking.openURL("mailto:support@ferrymanfin.com?subject=Requesting Some Help").catch((e) => console.log(e));
+			Linking.openURL("mailto:support@groestlcoin.org?subject=Requesting Some Help").catch((e) => console.log(e));
 		} catch (e) {}
 	};
 	
@@ -1107,7 +1107,7 @@ class Settings extends PureComponent {
 							</View>
 							
 							<SettingGeneral
-								value={`Need Some Help?\nsupport@ferrymanfin.com`}
+								value={`Need Some Help?\nsupport@groestlcoin.org`}
 								col1Image={<FontAwesome name="support" size={50} color={colors.purple} />}
 								onPress={this.requestHelp}
 								valueStyle={{ color: colors.purple, fontSize: 16, textAlign: "center", fontWeight: "bold" }}

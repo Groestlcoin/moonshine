@@ -56,7 +56,7 @@ If you are looking for secure cold storage solutions please consider purchasing 
         * This can be accessed from the Send Transaction view and basically allows users to select from a list of available UTXO's to include in their transaction.
 
 For an up-to-date list of features that are in progress please refer to Moonshine's [issue page.](https://github.com/coreyphillips/moonshine/issues)
-If you do not see a feature that you want feel free to create a new issue requesting it or reach out at support@ferrymanfin.com and let me know.
+If you do not see a feature that you want feel free to create a new issue requesting it or reach out at support@groestlcoin.org and let me know.
 
 ### Contributing
 
