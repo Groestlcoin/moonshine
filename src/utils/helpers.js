@@ -22,7 +22,7 @@ const bitcoinMessage = require("groestlcoinjs-message");
 const bip39 = require("bip39");
 const bip32 = require("bip32");
 const moment = require("moment");
-const bip21 = require("bip21");
+const bip21 = require("bip21grs");
 const Url = require("url-parse");
 const {
 	availableCoins,
