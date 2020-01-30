@@ -177,12 +177,11 @@ const parsePaymentRequest = (data = "") => {
 					try {
 						//Remove slashes
 						if (data.includes("//")) data = data.replace("//", "");
-						//bip21.decode will throw if anything other than "bitcoin" is passed to it.
-						//Replace any instance of "testnet" or "litecoin" with "bitcoin"
+						//bip21grs.decode will throw if anything other than "groestlcoin" is passed to it.
+						//Replace any instance of "testnet" or "litecoin" with "groestlcoin"
 						const coin = data.substr(0, data.indexOf(':'));
-						if (coin.toLowerCase().includes("testnet")) data = data.replace("testnet", "bitcoin");
-						if (coin.toLowerCase().includes("litecoin")) data = data.replace("litecoin", "bitcoin");
-						if (coin.toLowerCase().includes("moonshine")) data = data.replace("moonshine", "bitcoin");
+						if (coin.toLowerCase().includes("testnet")) data = data.replace("testnet", "groestlcoin");
+						if (coin.toLowerCase().includes("moonshine")) data = data.replace("moonshine", "groestlcoin");
 						const result = bip21.decode(data);
 						const address = result.address;
 						validateAddressResult = validateAddress(address);
@@ -238,7 +237,7 @@ const convert_zpub_to_xpub = (z) => {
 };
 */
 
-const getTransactionData = ({ txId = "", selectedCrypto = "bitcoin" } = {}) => {
+const getTransactionData = ({ txId = "", selectedCrypto = "groestlcoin" } = {}) => {
 	return new Promise(async (resolve) => {
 		const failure = (data = "") => {
 			resolve({error: true, data});
@@ -262,7 +261,7 @@ const getTransactionData = ({ txId = "", selectedCrypto = "bitcoin" } = {}) => {
 	});
 };
 
-const getExchangeRate = ({ selectedCrypto = "bitcoin", selectedCurrency = "usd", selectedService = "coingecko" } = {}) => {
+const getExchangeRate = ({ selectedCrypto = "groestlcoin", selectedCurrency = "usd", selectedService = "coingecko" } = {}) => {
 	return new Promise(async (resolve) => {
 		const failure = (errorTitle = "", errorMsg = "") => {
 			resolve({ error: true, errorTitle, errorMsg });
@@ -286,7 +285,7 @@ const getExchangeRate = ({ selectedCrypto = "bitcoin", selectedCurrency = "usd",
 	});
 };
 
-const getAddressTransactions = async ({ address = "", addresses = [], changeAddresses = [], currentBlockHeight = 0, selectedCrypto = "bitcoin" } = {}) => {
+const getAddressTransactions = async ({ address = "", addresses = [], changeAddresses = [], currentBlockHeight = 0, selectedCrypto = "groestlcoin" } = {}) => {
 	return new Promise(async (resolve) => {
 		const failure = (data = "") => {
 			resolve({ error: true, data });
@@ -314,7 +313,7 @@ const getAddressTransactions = async ({ address = "", addresses = [], changeAddr
 	});
 };
 
-const getAllTransactions = async ({ allAddresses = [], addresses = [], changeAddresses = [], currentBlockHeight = 0, selectedCrypto = "bitcoin" } = {}) => {
+const getAllTransactions = async ({ allAddresses = [], addresses = [], changeAddresses = [], currentBlockHeight = 0, selectedCrypto = "groestlcoin" } = {}) => {
 	return new Promise(async (resolve) => {
 		const failure = (data = "") => {
 			resolve({ error: true, data });
@@ -361,7 +360,7 @@ const removeDupsFromArrOfObj = (arr = [], value = "") => {
 };
 
 //This returns either "mainnet" or "testnet" and assumes the following selectedCrypto format "coinTestnet"
-const getNetworkType = (selectedCrypto = "bitcoin") => {
+const getNetworkType = (selectedCrypto = "groestlcoin") => {
 	try {
 		selectedCrypto = selectedCrypto.toLowerCase();
 		const isTestnet = selectedCrypto.includes("testnet");
@@ -397,7 +396,7 @@ const setReplaceByFee = ({ txb = {}, setRbf = true } = {}) => {
 
 //amount = Amount to send to recipient.
 //transactionFee = fee per byte.
-const createTransaction = ({ address = "", transactionFee = 2, amount = 0, confirmedBalance = 0, utxos = [], blacklistedUtxos = [], changeAddress = "", wallet = "wallet0", selectedCrypto = "bitcoin", message = "", addressType = "bech32", setRbf = true } = {}) => {
+const createTransaction = ({ address = "", transactionFee = 2, amount = 0, confirmedBalance = 0, utxos = [], blacklistedUtxos = [], changeAddress = "", wallet = "wallet0", selectedCrypto = "groestlcoin", message = "", addressType = "bech32", setRbf = true } = {}) => {
 	return new Promise(async (resolve) => {
 		try {
 			const network = networks[selectedCrypto];
@@ -533,7 +532,7 @@ const getCoinNetwork = (coin = "") => {
 	return networks[coin];
 };
 
-const generateAddresses = async ({ addressAmount = 0, changeAddressAmount = 0, wallet = "wallet0", addressIndex = 0, changeAddressIndex = 0, selectedCrypto = "bitcoin", keyDerivationPath = "84", addressType = "bech32" } = {}) => {
+const generateAddresses = async ({ addressAmount = 0, changeAddressAmount = 0, wallet = "wallet0", addressIndex = 0, changeAddressIndex = 0, selectedCrypto = "groestlcoin", keyDerivationPath = "84", addressType = "bech32" } = {}) => {
 	return new Promise(async (resolve) => {
 		const failure = (data) => {
 			resolve({error: true, data});
@@ -658,7 +657,7 @@ const openUrl = (url = "") => {
 const openTxId = (txid = "", selectedCrypto = ""): void => {
 	if (!txid || !selectedCrypto) return;
 	let url = "";
-	if (selectedCrypto === "bitcoin") url = `https://blockstream.info/tx/${txid}`;
+	if (selectedCrypto === "groestlcoin") url = `https://blockstream.info/tx/${txid}`;
 	if (selectedCrypto === "bitcoinTestnet") url = `https://blockstream.info/testnet/tx/${txid}`;
 	if (selectedCrypto === "litecoin") url = `https://chain.so/tx/LTC/${txid}`;
 	if (selectedCrypto === "litecoinTestnet") url = `https://chain.so/tx/LTCTEST/${txid}`;
@@ -798,7 +797,7 @@ const decodeOpReturnMessage = (opReturn = "") => {
 	}
 };
 
-const signMessage = async ({ message = "", addressType = "bech32", path = "m/84'/0'/0'/0/0", selectedWallet = "wallet0", selectedCrypto = "bitcoin" } = {}) => {
+const signMessage = async ({ message = "", addressType = "bech32", path = "m/84'/0'/0'/0/0", selectedWallet = "wallet0", selectedCrypto = "groestlcoin" } = {}) => {
 	try {
 		if (message === "") return { error: true, data: "No message to sign." };
 		const network = networks[selectedCrypto];
@@ -833,6 +832,8 @@ const signMessage = async ({ message = "", addressType = "bech32", path = "m/84'
 			signature = bitcoinMessage.signElectrum(message, privateKey, keyPair.compressed, messagePrefix, sigOptions);
 		}
 		signature = signature.toString("base64");
+		console.log("SignElectrum: signature:" + signature + ", message:" + message + ", addressType: " + addressType)
+
 		
 		const address = await getAddress(keyPair, network, addressType);
 		const isVerified = verifyMessage({ message, address, signature, selectedCrypto });
@@ -848,7 +849,7 @@ const verifyMessage = ({ message = "", address = "", signature = "", selectedCry
 		const network = networks[selectedCrypto];
 		const messagePrefix = network.messagePrefix;
 		let isValid = false;
-		try { isValid = bitcoinMessage.verify(message, address, signature, messagePrefix); } catch (e) {}
+		try { isValid = bitcoinMessage.verifyElectrum(message, address, signature, messagePrefix); } catch (e) {}
 		//This is a fix for https://github.com/bitcoinjs/bitcoinjs-message/issues/20
 		if (!isValid)  isValid = bitcoinMessage.verifyElectrum(message, address, signature, messagePrefix);
 		return isValid;
@@ -858,7 +859,7 @@ const verifyMessage = ({ message = "", address = "", signature = "", selectedCry
 	}
 };
 
-const getBaseDerivationPath = ({ keyDerivationPath = "84", selectedCrypto = "bitcoin" }) => {
+const getBaseDerivationPath = ({ keyDerivationPath = "84", selectedCrypto = "groestlcoin" }) => {
 	try {
 		const networkValue = networks.defaultWalletShape.coinTypePath[selectedCrypto];
 		return `m/${keyDerivationPath}'/${networkValue}'/0'/0/0`;
