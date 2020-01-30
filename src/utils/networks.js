@@ -45,7 +45,7 @@ const networks = {
 	// 	wif: 0xef
 	// },
 	groestlcoin: {
-		messagePrefix: '\x1CGroestlcoin Signed Message:\n',
+		messagePrefix: '\x1CGroestlCoin Signed Message:\n',
 		bech32: 'grs',
 		bip32: {
 			public: 0x0488b21e,
@@ -56,7 +56,7 @@ const networks = {
 		wif: 0x80
 	},
 	groestlcoinTestnet: {
-		messagePrefix: '\x1CGroestlcoin Signed Message:\n',
+		messagePrefix: '\x1CGroestlCoin Signed Message:\n',
 		bech32: 'tgrs',
 		bip32: {
 			public: 0x043587cf,
