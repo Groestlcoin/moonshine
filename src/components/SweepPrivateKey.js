@@ -68,7 +68,7 @@ class SendTransaction extends PureComponent {
 
 			privateKeyData: {
 				keyPair: {},
-				network: "bitcoin",
+				network: "groestlcoin",
 				bech32Utxos: [],
 				p2shUtxos: [],
 				p2pkhUtxos: [],
@@ -329,7 +329,7 @@ class SendTransaction extends PureComponent {
 		}
 	};
 
-	getPrivateKeyData = async ({ privateKey = "", network = "bitcoin" } = {}) => {
+	getPrivateKeyData = async ({ privateKey = "", network = "groestlcoin" } = {}) => {
 		return new Promise(async (resolve) => {
 			try {
 				//Switch to the specified network in order to sweep the coins
