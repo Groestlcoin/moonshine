@@ -32,7 +32,7 @@
     "bip39": "^3.0.2",
     "bitcoin-units": "^0.3.0",
     "groestlcoinjs-lib": "^v4.0.3",
-    "groestlcoinjs-message": "https://github.com/Groestlcoin/groestlcoinjs-message#fix-message-signing",
+    "groestlcoinjs-message": "^2.1.0",
     "buffer": "^5.4.3",
     "crypto": "^1.0.1",
     "events": "^3.1.0",
