@@ -29,7 +29,7 @@ const updateWallet = (payload) => ({
 	payload
 });
 
-const getExchangeRate = ({ selectedCoin = "bitcoin", selectedCurrency = "usd", selectedService = "coingecko" } = {}) => () => {
+const getExchangeRate = ({ selectedCoin = "groestlcoin", selectedCurrency = "usd", selectedService = "coingecko" } = {}) => () => {
 	return new Promise(async (resolve) => {
 
 		const failure = (errorTitle = "", errorMsg = "") => {
@@ -77,7 +77,7 @@ const deleteWallet = ({ wallet } = {}) => async (dispatch) => {
 	});
 };
 
-const createWallet = ({ wallet = "wallet0", selectedCrypto = "bitcoin", addressAmount = 2, changeAddressAmount = 2, mnemonic = "", generateAllAddresses = true, keyDerivationPath = "84" } = {}) => async (dispatch) => {
+const createWallet = ({ wallet = "wallet0", selectedCrypto = "groestlcoin", addressAmount = 2, changeAddressAmount = 2, mnemonic = "", generateAllAddresses = true, keyDerivationPath = "84" } = {}) => async (dispatch) => {
 	return new Promise(async (resolve) => {
 		const failure = (data) => {
 			resolve({error: true, data});
@@ -159,7 +159,7 @@ const createWallet = ({ wallet = "wallet0", selectedCrypto = "bitcoin", addressA
 	});
 };
 
-const resetUtxos = ({wallet = "wallet0", addresses = [], changeAddresses = [], currentBlockHeight = 0, selectedCrypto = "bitcoin"} = {}) => async (dispatch) => {
+const resetUtxos = ({wallet = "wallet0", addresses = [], changeAddresses = [], currentBlockHeight = 0, selectedCrypto = "groestlcoin"} = {}) => async (dispatch) => {
 	return new Promise(async (resolve) => {
 		const failure = (data) => {
 			resolve({error: true, data});
@@ -200,7 +200,7 @@ const resetUtxos = ({wallet = "wallet0", addresses = [], changeAddresses = [], c
 	});
 };
 
-const addTransaction = ({ wallet = "wallet0", transaction = {}, selectedCrypto = "bitcoin", rbfData = {} } = {}) => async (dispatch) => {
+const addTransaction = ({ wallet = "wallet0", transaction = {}, selectedCrypto = "groestlcoin", rbfData = {} } = {}) => async (dispatch) => {
 	return new Promise(async (resolve) => {
 		const failure = (data) => {
 			resolve({ error: true, data });
@@ -223,7 +223,7 @@ const addTransaction = ({ wallet = "wallet0", transaction = {}, selectedCrypto =
 	});
 };
 
-const updateBalance = ({ wallet = "wallet0", utxos = [], blacklistedUtxos = [], selectedCrypto = "bitcoin" } = {}) => async (dispatch) => {
+const updateBalance = ({ wallet = "wallet0", utxos = [], blacklistedUtxos = [], selectedCrypto = "groestlcoin" } = {}) => async (dispatch) => {
 	return new Promise(async (resolve) => {
 		const failure = (data) => {
 			resolve({ error: true, data });
@@ -265,7 +265,7 @@ const updateBalance = ({ wallet = "wallet0", utxos = [], blacklistedUtxos = [], 
 	});
 };
 
-const updateBlockHeight = ({ selectedCrypto = "bitcoin" } = {}) => async (dispatch) => {
+const updateBlockHeight = ({ selectedCrypto = "groestlcoin" } = {}) => async (dispatch) => {
 	return new Promise(async (resolve) => {
 		const failure = (data) => {
 			resolve({ error: true, data });
@@ -297,7 +297,7 @@ const updateBlockHeight = ({ selectedCrypto = "bitcoin" } = {}) => async (dispat
 	});
 };
 
-const addAddresses = ({ wallet = "wallet0", selectedCrypto = "bitcoin", addressAmount = 5, changeAddressAmount = 5, addressIndex = 0, changeAddressIndex = 0, keyDerivationPath = "84" }) => async (dispatch) => {
+const addAddresses = ({ wallet = "wallet0", selectedCrypto = "groestlcoin", addressAmount = 5, changeAddressAmount = 5, addressIndex = 0, changeAddressIndex = 0, keyDerivationPath = "84" }) => async (dispatch) => {
 	return new Promise(async (resolve) => {
 		const failure = (data) => {
 			resolve({error: true, data});
@@ -350,7 +350,7 @@ const toggleUtxoBlacklist = ({ transaction = "", selectedWallet = "wallet0", sel
 	});
 };
 
-const initialImportSync = ({ wallet = "wallet0", selectedCrypto = "bitcoin", currentBlockHeight = 0, keyDerivationPath = "84" }) => async (dispatch) => {
+const initialImportSync = ({ wallet = "wallet0", selectedCrypto = "groestlcoin", currentBlockHeight = 0, keyDerivationPath = "84" }) => async (dispatch) => {
 	return new Promise(async (resolve) => {
 		const failure = (data) => {
 			resolve({ error: true, data });
@@ -464,7 +464,7 @@ const updateRbfData = ({ wallet = "wallet0", selectedCrypto = "", rbfData = {} }
 	});
 };
 
-const getNextAvailableAddress = ({ wallet = "wallet0", addresses = [], changeAddresses = [], addressIndex = 0, changeAddressIndex = 0, selectedCrypto = "bitcoin", currentBlockHeight = 0, keyDerivationPath = "84", addressType = "bech32" } = {}) => async (dispatch) => {
+const getNextAvailableAddress = ({ wallet = "wallet0", addresses = [], changeAddresses = [], addressIndex = 0, changeAddressIndex = 0, selectedCrypto = "groestlcoin", currentBlockHeight = 0, keyDerivationPath = "84", addressType = "bech32" } = {}) => async (dispatch) => {
 	return new Promise(async (resolve) => {
 		const failure = (data) => {
 			resolve({ error: true, data });

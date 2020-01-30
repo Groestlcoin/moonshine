@@ -57,7 +57,7 @@ interface CoinButtonComponent {
 	walletId: string,
 	balance: number
 }
-const _CoinButton = ({ onCoinPress, cryptoUnit = "satoshi", coin = "bitcoin", label = "Bitcoin", walletId = "wallet0", balance = 0 }: CoinButtonComponent) => {
+const _CoinButton = ({ onCoinPress, cryptoUnit = "satoshi", coin = "groestlcoin", label = "Bitcoin", walletId = "wallet0", balance = 0 }: CoinButtonComponent) => {
 	return (
 		<TouchableOpacity key={`${coin}${walletId}`} onPress={() => onCoinPress({coin, walletId})} style={styles.button}>
 			<View style={styles.buttonContent}>

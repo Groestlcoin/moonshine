@@ -38,7 +38,7 @@ interface WalletSliderEntryComponent {
 	onCoinPress: Function,
 	updateActiveSlide: Function
 }
-const _WalletSliderEntry = ({ walletId = "bitcoin", wallet = { wallets: {}, selectedWallet: "wallet0", walletOrder: [] }, cryptoUnit = "satoshi", updateWallet = () => null, deleteWallet = () => null, displayTestnet = true, onCoinPress = () => null, updateActiveSlide }: WalletSliderEntryComponent) => {
+const _WalletSliderEntry = ({ walletId = "groestlcoin", wallet = { wallets: {}, selectedWallet: "wallet0", walletOrder: [] }, cryptoUnit = "satoshi", updateWallet = () => null, deleteWallet = () => null, displayTestnet = true, onCoinPress = () => null, updateActiveSlide }: WalletSliderEntryComponent) => {
 	
 	if (Platform.OS === "ios") useEffect(() => LayoutAnimation.easeInEaseOut());
 	

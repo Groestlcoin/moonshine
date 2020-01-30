@@ -12,7 +12,7 @@ export const updateSettings = (payload) => ({
 	payload
 });
 
-export const updatePeersList = ({ peerList = [], coin = "bitcoin"} = {}) => (dispatch) => {
+export const updatePeersList = ({ peerList = [], coin = "groestlcoin"} = {}) => (dispatch) => {
 	return new Promise(async (resolve) => {
 		const failure = (errorTitle = "", errorMsg = "") => {
 			resolve({ error: true, errorTitle, errorMsg });

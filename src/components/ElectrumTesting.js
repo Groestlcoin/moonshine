@@ -84,7 +84,7 @@ class ElectrumTesting extends PureComponent<Props> {
 	async componentDidMount(): void {
 		//Spin up the nodejs thread
 		//await Promise.all(nodejs.start("main.js"));
-		this.onCryptoButtonPress("bitcoin");
+		this.onCryptoButtonPress("groestlcoin");
 	}
 	
 	cryptoButton = ({ label = "", key = "" }) => {
@@ -180,7 +180,7 @@ class ElectrumTesting extends PureComponent<Props> {
 		} else if (type === "single") {
 			return this.props.wallet.wallets[this.props.wallet.selectedWallet].addresses[this.state.selectedCrypto][0].address || addresses[this.state.selectedCrypto][0];
 		} else {
-			return addresses["bitcoin"];
+			return addresses["groestlcoin"];
 		}
 	};
 	

@@ -22,7 +22,7 @@ interface ImportPhraseComponent {
 const _VerifyMessage = (
 	{
 		onBack = () => null,
-		selectedCrypto = "bitcoin"
+		selectedCrypto = "groestlcoin"
 	}: ImportPhraseComponent) => {
 	const [data, setData] = useState({ address: "", message: "", signature: "", isValid: false });
 	const [animationOpacity] = useState(new Animated.Value(0));

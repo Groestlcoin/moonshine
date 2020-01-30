@@ -18,7 +18,7 @@ const {
 	getCoinData
 } = require("../utils/networks");
 
-const getCryptoLabel = ({ selectedCrypto = "bitcoin" } = {}) => {
+const getCryptoLabel = ({ selectedCrypto = "groestlcoin" } = {}) => {
 	try {
 		return capitalize(selectedCrypto);
 	} catch (e) {
@@ -31,9 +31,9 @@ interface GetCryptoUnitLabel {
 	selectedCrypto: string
 }
 const getCryptoUnitLabel = (
-	{ cryptoUnit = "satoshi", selectedCrypto = "bitcoin" }:
+	{ cryptoUnit = "satoshi", selectedCrypto = "groestlcoin" }:
 		GetCryptoUnitLabel = {
-		cryptoUnit: "satoshi", selectedCrypto: "bitcoin"
+		cryptoUnit: "satoshi", selectedCrypto: "groestlcoin"
 	}) => {
 	try {
 		return getCoinData({ cryptoUnit, selectedCrypto }).acronym;
@@ -58,7 +58,7 @@ interface HeaderComponent {
 	cryptoValue: number | string,
 	cryptoUnit: string
 }
-const _Header = ({compress = false, fiatSymbol = "$", selectedCrypto = "bitcoin", onSelectCoinPress = () => null, isOnline = true, exchangeRate = 0, walletName = "", selectedCryptoStyle = {}, activeOpacity = 0.6, fontSize = 60, fiatValue = 0, cryptoValue = 0, cryptoUnit = "satoshi"}: HeaderComponent) => {
+const _Header = ({compress = false, fiatSymbol = "$", selectedCrypto = "groestlcoin", onSelectCoinPress = () => null, isOnline = true, exchangeRate = 0, walletName = "", selectedCryptoStyle = {}, activeOpacity = 0.6, fontSize = 60, fiatValue = 0, cryptoValue = 0, cryptoUnit = "satoshi"}: HeaderComponent) => {
 	try {
 		if (isNaN(fiatValue)) fiatValue = 0;
 		if (cryptoValue === 0 && cryptoUnit === "BTC") {

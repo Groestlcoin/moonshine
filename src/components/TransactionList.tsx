@@ -35,7 +35,7 @@ const _DisplayItem = (
 		transaction = {
 			item: { hash: "", timestamp: 0, type: "", status: "sent", block: 0, messages: [], sentAmount: 0, amount: 0 }
 		},
-		selectedCrypto = "bitcoin",
+		selectedCrypto = "groestlcoin",
 		exchangeRate = "0",
 		blockHeight = 0,
 		onTransactionPress = () => null,

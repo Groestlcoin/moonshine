@@ -32,7 +32,7 @@ interface ImportPhraseComponent {
 const _SignMessage = (
 	{
 		onBack = () => null,
-		selectedCrypto = "bitcoin",
+		selectedCrypto = "groestlcoin",
 		selectedWallet = "wallet0",
 		derivationPath = "84",
 		addressType = "bech32", //bech32, segwit or legacy

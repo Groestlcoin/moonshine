@@ -190,7 +190,7 @@ const setupSubscribeAddress = async ({ address = "", id = "", method = "", onRec
 	} catch (e) {console.log(e);}
 };
 
-const subscribeAddress = async ({ id = "wallet0bitcoin", address = "", coin = "bitcoin", onReceive = (data) => console.log(data) } = {}) => {
+const subscribeAddress = async ({ id = "wallet0bitcoin", address = "", coin = "groestlcoin", onReceive = (data) => console.log(data) } = {}) => {
 	try {
 		//Ensure this address is not already subscribed
 		if (this.subscribedAddresses.includes(address)) return;

@@ -27,9 +27,9 @@ interface FormatUri extends Default {
 	label?: string // Label to add to the URI
 }
 const formatUri = ({ selectedCrypto, address }: FormatUri = {
-	selectedCrypto: "bitcoin", address: ""
+	selectedCrypto: "groestlcoin", address: ""
 }) => {
-	let coin = "bitcoin";
+	let coin = "groestlcoin";
 	try {coin = selectedCrypto.toLowerCase().replace("testnet", "");} catch (e) {}
 	try {
 		return `${coin}:${address}`;
@@ -40,7 +40,7 @@ interface ReceiveTransactionComponent extends Default, FormatUri {
 	size?: number, // Size of QRCode
 	disabled?: boolean // Disable the Copy/Share buttons
 }
-const _ReceiveTransaction = ({ selectedCrypto = "bitcoin", address = "", amount = 0, label = "", size = 200, disabled = false }: ReceiveTransactionComponent) => {
+const _ReceiveTransaction = ({ selectedCrypto = "groestlcoin", address = "", amount = 0, label = "", size = 200, disabled = false }: ReceiveTransactionComponent) => {
 	
 	if (Platform.OS === "ios") useEffect(() => LayoutAnimation.easeInEaseOut());
 

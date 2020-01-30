@@ -32,11 +32,11 @@ interface BroadcastTransactionComponent {
 	onBack: Function
 }
 // eslint-disable-next-line no-unused-vars
-const _defaultBroadcastTransaction = ({txHex = "", sendTransactionFallback = false, selectedCrypto = "bitcoin"} = {}) => {
+const _defaultBroadcastTransaction = ({txHex = "", sendTransactionFallback = false, selectedCrypto = "groestlcoin"} = {}) => {
 	return { error: true, data: "" };
 };
 
-const _BroadcastTransaction = ({ broadcastTransaction = _defaultBroadcastTransaction, sendTransactionFallback = false, refreshWallet = () => null, selectedCrypto = "bitcoin", onBack = () => null }: BroadcastTransactionComponent) => {
+const _BroadcastTransaction = ({ broadcastTransaction = _defaultBroadcastTransaction, sendTransactionFallback = false, refreshWallet = () => null, selectedCrypto = "groestlcoin", onBack = () => null }: BroadcastTransactionComponent) => {
 	const [transaction, setTransaction] = useState("");
 	const [broadcasting, setBroadcasting] = useState(false);
 	const [hash, setHash] = useState("");

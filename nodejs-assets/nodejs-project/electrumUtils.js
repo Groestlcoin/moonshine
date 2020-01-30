@@ -68,7 +68,7 @@ const unSubscribeAddress = async ({ id, coin, scriptHashes = [] } = {}) => {
 	}
 };
 
-const connectToPeer = async ({ id, peers = [], customPeers = [], coin = "bitcoin" } = {}) => {
+const connectToPeer = async ({ id, peers = [], customPeers = [], coin = "groestlcoin" } = {}) => {
 	try {
 		api.coin = coin;
 		let customPeersLength = 0;

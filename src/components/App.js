@@ -162,7 +162,7 @@ export default class App extends Component {
 		isAnimating: false
 	};
 	
-	setExchangeRate = async ({selectedCrypto = "bitcoin", selectedCurrency = "usd", selectedService = "coingecko"} = {}) => {
+	setExchangeRate = async ({selectedCrypto = "groestlcoin", selectedCurrency = "usd", selectedService = "coingecko"} = {}) => {
 		//const start = this.props.transaction.feeTimestamp;
 		//const end = new Date();
 		//const difference = getDifferenceBetweenDates({ start, end });
@@ -179,7 +179,7 @@ export default class App extends Component {
 		//}
 	};
 	
-	onCoinPress = async ({coin = "bitcoin", walletId = "wallet0", initialLoadingMessage = ""} = {}) => {
+	onCoinPress = async ({coin = "groestlcoin", walletId = "wallet0", initialLoadingMessage = ""} = {}) => {
 		try {
 			const sameCoin = this.props.wallet.selectedCrypto === coin;
 			const sameWallet = this.props.wallet.selectedWallet === walletId;

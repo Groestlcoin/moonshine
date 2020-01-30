@@ -55,7 +55,7 @@ const _UtxoRow = (
 		onPress = () => null,
 		whiteListedUtxos = [""],
 		coinData = { crypto: "", acronym: "" },
-		selectedCrypto = "bitcoin"
+		selectedCrypto = "groestlcoin"
 	}: UtxoRowComponent) => {
 	try {
 		const { tx_hash, value, address, path, confirmations } = utxo;
@@ -155,7 +155,7 @@ const _CoinControl = (
 		whiteListedUtxosBalance = 0,
 		onPress = () => null,
 		utxos = [_utxo],
-		selectedCrypto = "bitcoin",
+		selectedCrypto = "groestlcoin",
 		cryptoUnit = "satoshi",
 		exchangeRate = 0,
 		style = {}

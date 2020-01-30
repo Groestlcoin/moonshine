@@ -153,7 +153,7 @@ const defaultWalletShape = {
 	rbfData: objectTypeItems
 };
 
-const getCoinImage = (coin = "bitcoin") => {
+const getCoinImage = (coin = "groestlcoin") => {
 	try {
 		coin = coin.toLowerCase();
 		coin = coin.replace("testnet", "");
@@ -173,7 +173,7 @@ const getCoinImage = (coin = "bitcoin") => {
 	}
 };
 
-const getCoinData = ({ selectedCrypto = "bitcoin", cryptoUnit = "satoshi" }) => {
+const getCoinData = ({ selectedCrypto = "groestlcoin", cryptoUnit = "satoshi" }) => {
 	try {
 		let acronym = "BTC";
 		let satoshi = "satoshi";
