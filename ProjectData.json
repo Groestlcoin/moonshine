@@ -41,7 +41,9 @@
       "bitcoin": "bc1qm6knmtrk5jfyt57rwkm8j74kxskxyrl504tlc9",
       "bitcoinTestnet": "tb1qxvg88t7a498yfdxgs4rjaz3r75dyr64h5r5wd7",
       "litecoin": "ltc1qrctkm565xale82pjt6nsxsyvvmln2qz8dpf6q9",
-      "litecoinTestnet": "tltc1qxvg88t7a498yfdxgs4rjaz3r75dyr64hdtksah"
+      "litecoinTestnet": "tltc1qxvg88t7a498yfdxgs4rjaz3r75dyr64hdtksah",
+      "groestlcoin": "grs1q49qls5kklryt95g5xx4p6msycpgjp8ramfc9jq",
+      "groestlcoinTestnet": "tgrs1q8dsztyhu6eghnpv8dhrm90gwyhc9tasseu5y2w"
     }
   }
 }
