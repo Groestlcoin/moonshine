@@ -90,7 +90,7 @@ const _ShareButtons = (
 			<View style={[styles.textContainer, textContainerStyle ]}>
 				<Text style={styles.text}>{text}</Text>
 				<Animated.View style={[styles.copiedContainer, textContainerStyle, {opacity: textOpacity}]}>
-					<LinearGradient style={[textContainerStyle, { flex: 1 }]} colors={[ "#6c2c9e", "#68299a", "#662798", "#632596", "#5e2191"]} start={{x: 0.0, y: 0.0}} end={{x: 1.0, y: 1.0}}>
+					<LinearGradient style={[textContainerStyle, { flex: 1 }]} colors={[ colors.purple, colors.purple, colors.purple, colors.purple, colors.purple]} start={{x: 0.0, y: 0.0}} end={{x: 1.0, y: 1.0}}>
 						<View style={styles.copied}>
 							<Text style={styles.copiedText}>{onCopySuccessText}</Text>
 						</View>
