@@ -136,7 +136,7 @@ def currentUser = System.getProperty("user.name");
 def keyChainId = "moonshine_android_keystore";
 def pass = ""
 if(Os.isFamily(Os.FAMILY_MAC)) {
-    pass = getPassword(currentUser, keyChainId)
+    pass = getPassword(currentUser, keyChainId);
 }
 
 android {
@@ -151,7 +151,7 @@ android {
         applicationId "org.groestlcoin.moonshine"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 38000
+        versionCode 38001
         versionName "0.2.0"
         multiDexEnabled true
         missingDimensionStrategy 'react-native-camera', 'general'

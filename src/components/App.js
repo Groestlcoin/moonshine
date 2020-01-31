@@ -82,6 +82,7 @@ this.headersAreSubscribed = false; //Determines whether wallet is subscribed to 
 this.subscribedWithPeer = ""; //Holds what peer we are subscribed to new headers with
 this.authenticating = false; //Determines whether the app is currently authenticating. This attempts to address issue #5.
 this.deepLinkUrl = ""; // Holds url for a deep link event.
+this.settingsWasPreviouslyOpen = false;
 export default class App extends Component {
 	
 	state = {
@@ -339,6 +340,10 @@ export default class App extends Component {
 			InteractionManager.runAfterInteractions(() => {
 				if (this.state.loadingTransactions !== false) this.setState({loadingTransactions: false});
 			});
+		}
+		if (this.settingsWasPreviouslyOpen) {
+			this.settingsWasPreviouslyOpen = false;
+			this.onSettingsPress();
 		}
 	};
 	
@@ -906,6 +911,13 @@ export default class App extends Component {
 		//Background -> Foreground
 		if (this.state.appState.match(/inactive|background/) && nextAppState === "active" && !this.state.displayCamera) {
 			this.setState({appState: nextAppState});
+			
+			//Check if Settings was previously opened, set to true if so.
+			if (this.state.displaySettings) {
+				//Check if there's any particular option that needs to be re-opened later in Settings.
+				if (this.getOpenSettingOnMount() !== "") this.settingsWasPreviouslyOpen = true;
+			}
+			
 			//Return if the desired app state and components are already set.
 			if (this.state.displayBiometrics || this.state.displayPin || this.authenticating) return;
 			try {
@@ -941,6 +953,8 @@ export default class App extends Component {
 	
 	async componentDidMount() {
 		//This gets called after redux-persist rehydrates
+		
+		await pauseExecution(100); //This helps to prevent a flicker on launch.
 		
 		//Spin up the nodejs thread
 		await nodejs.start("main.js");
@@ -1048,6 +1062,9 @@ export default class App extends Component {
 						} catch (e) {
 						}
 						try {
+							//Only update if the display state has changed
+							if (this.state[stateId] === display) return;
+							
 							//Set the items to display and hide in the appropriate object.
 							if (display) {
 								itemsToDisplay = {...itemsToDisplay, [stateId]: display};
@@ -1812,6 +1829,16 @@ export default class App extends Component {
 		}
 	};
 	
+	//Determines if any particular setting option should be launched when navigating to the Settings component.
+	getOpenSettingOnMount = () => {
+		try {
+			const { verifyMessage, signMessage } = this.props.settings;
+			if (verifyMessage.address !== "" || verifyMessage.message !== "" || verifyMessage.signature !== "") return "verifyMessage";
+			if (signMessage.message !== "" || signMessage.signature !== "") return "signMessage";
+			return "";
+		} catch (e) {return "";}
+	};
+	
 	render() {
 		//return <ElectrumTesting />;
 		return (
@@ -1879,6 +1906,7 @@ export default class App extends Component {
 								{this.state.displaySettings &&
 								<Animated.View style={[styles.settings, {opacity: this.state.settingsOpacity}]}>
 									<Settings
+										openSettingOnMount={this.getOpenSettingOnMount()}
 										createNewWallet={this.createNewWallet}
 										onBack={this.resetView}
 										refreshWallet={this.refreshWallet}

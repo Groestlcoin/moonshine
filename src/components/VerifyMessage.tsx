@@ -17,19 +17,31 @@ const {
 
 interface ImportPhraseComponent {
 	onBack: Function,
-	selectedCrypto: string
+	verifyMessageData: {
+		address: string,
+		message: string,
+		signature: string,
+	},
+	selectedCrypto: string,
+	updateSettings: Function
 }
 const _VerifyMessage = (
 	{
 		onBack = () => null,
-		selectedCrypto = "groestlcoin"
+		verifyMessageData = {
+			address: "",
+			message: "",
+			signature: "",
+		},
+		selectedCrypto = "groestlcoin",
+		updateSettings = () => null
 	}: ImportPhraseComponent) => {
-	const [data, setData] = useState({ address: "", message: "", signature: "", isValid: false });
+	const [dataIsValid, setDataIsValid] = useState(false);
 	const [animationOpacity] = useState(new Animated.Value(0));
 	
 	const getAnimation = () => {
 		try {
-			if (data.isValid) {
+			if (dataIsValid) {
 				return require(`../assets/lottie/correct.json`);
 			} else {
 				return require(`../assets/lottie/incorrect.json`);
@@ -40,8 +52,8 @@ const _VerifyMessage = (
 	};
 	
 	const _verifyMessage = () => {
-		const isValid = verifyMessage({ ...data, selectedCrypto });
-		setData({ ...data, isValid });
+		const isValid = verifyMessage({ ...verifyMessageData, selectedCrypto });
+		setDataIsValid(isValid);
 		Animated.timing(
 			animationOpacity,
 			{
@@ -52,7 +64,7 @@ const _VerifyMessage = (
 			}
 		).start(() => {
 			// @ts-ignore
-			this.animation.play()
+			this.animation.play();
 		});
 	};
 	
@@ -69,10 +81,10 @@ const _VerifyMessage = (
 						autoCapitalize="none"
 						autoCompleteType="off"
 						autoCorrect={false}
-						onChangeText={(address) => setData({ ...data, address })}
-						value={data.address}
+						onChangeText={async (address) => updateSettings({ verifyMessage: { ...verifyMessageData, address }})}
+						value={verifyMessageData.address}
 						multiline={false}
-						returnKeyType = { "next" }
+						returnKeyType="next"
 						onSubmitEditing={() => {
 							// @ts-ignore
 							this.secondTextInput.focus(); }}
@@ -87,8 +99,8 @@ const _VerifyMessage = (
 						autoCapitalize="none"
 						autoCompleteType="off"
 						autoCorrect={false}
-						onChangeText={(message) => setData({ ...data, message })}
-						value={data.message}
+						onChangeText={async (message) => updateSettings({ verifyMessage: { ...verifyMessageData, message }})}
+						value={verifyMessageData.message}
 						multiline={true}
 						ref={(input) => {
 							// @ts-ignore
@@ -104,13 +116,13 @@ const _VerifyMessage = (
 						autoCapitalize="none"
 						autoCompleteType="off"
 						autoCorrect={false}
-						onChangeText={(signature) => setData({ ...data, signature })}
-						value={data.signature}
+						onChangeText={async (signature) => updateSettings({ verifyMessage: { ...verifyMessageData, signature } })}
+						value={verifyMessageData.signature}
 						multiline={true}
 					/>
 					
 					<Animated.View style={[styles.animation, {opacity: animationOpacity}]}>
-						<Text style={styles.text}>{ data.isValid ? "Valid Signature!" : "Invalid Signature" }</Text>
+						<Text style={styles.text}>{dataIsValid ? "Valid Signature!" : "Invalid Signature"}</Text>
 						<LottieView
 							ref={animation => {
 								// @ts-ignore
@@ -126,20 +138,27 @@ const _VerifyMessage = (
 				
 				<View style={{ paddingVertical: 10 }} />
 				<Animated.View style={styles.sendButton}>
-					<Button title="Verify Message" onPress={_verifyMessage} disabled={!data.address || !data.message || !data.signature}/>
+					<Button title="Verify Message" onPress={_verifyMessage} disabled={!verifyMessageData.address || !verifyMessageData.message || !verifyMessageData.signature} />
 				</Animated.View>
 				
 			</View>
 			
 			<Animated.View style={styles.xButton}>
-				<XButton style={{borderColor: "transparent"}} onPress={onBack}/>
+				<XButton style={{borderColor: "transparent"}} onPress={onBack} />
 			</Animated.View>
 		</View>
 	);
 };
 
 _VerifyMessage.propTypes = {
-	onBack: PropTypes.func.isRequired
+	onBack: PropTypes.func.isRequired,
+	selectedCrypto: PropTypes.string.isRequired,
+	verifyMessageData: PropTypes.shape({
+		address: PropTypes.string.isRequired,
+		message: PropTypes.string.isRequired,
+		signature: PropTypes.string.isRequired
+	}).isRequired,
+	updateSettings: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({
@@ -172,12 +191,6 @@ const styles = StyleSheet.create({
 		color: colors.purple,
 		fontWeight: "bold"
 	},
-	centerItem: {
-		zIndex: 10,
-		alignItems: "center",
-		justifyContent: "center",
-		marginTop: 10
-	},
 	sendButton: {
 		alignItems: "center",
 		justifyContent: "center",
@@ -189,14 +202,6 @@ const styles = StyleSheet.create({
 		left: 0,
 		right: 0,
 		bottom: 10
-	},
-	header: {
-		...systemWeights.thin,
-		color: colors.white,
-		textAlign: "center",
-		backgroundColor: "transparent",
-		fontSize: 18,
-		fontWeight: "bold"
 	},
 	text: {
 		...systemWeights.semibold,
@@ -220,7 +225,11 @@ const VerifyMessage = memo(
 	_VerifyMessage,
 	(prevProps, nextProps) => {
 		if (!prevProps || !nextProps) return true;
-		return true;
+		try {
+			return prevProps.verifyMessageData.address === nextProps.verifyMessageData.address &&
+				prevProps.verifyMessageData.message === nextProps.verifyMessageData.message &&
+				prevProps.verifyMessageData.signature === nextProps.verifyMessageData.signature;
+		} catch (e) { return false; }
 	}
 );
 export default VerifyMessage;

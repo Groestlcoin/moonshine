@@ -27,7 +27,13 @@ interface ImportPhraseComponent {
 	addresses: [{
 		address: string,
 		path: string
-	}]
+	}],
+	signMessageData?: {
+		message: string,
+		signature: string,
+		selectedAddressIndex: number
+	},
+	updateSettings: Function
 }
 const _SignMessage = (
 	{
@@ -36,26 +42,31 @@ const _SignMessage = (
 		selectedWallet = "wallet0",
 		derivationPath = "84",
 		addressType = "bech32", //bech32, segwit or legacy
-		addresses = [{ address: "", path: "" }]
+		addresses = [{ address: "", path: "" }],
+		signMessageData = {
+			message: "",
+			signature: "",
+			selectedAddressIndex: 0
+		},
+		updateSettings = () => null
 	}: ImportPhraseComponent) => {
 	
-	const [message, setMessage] = useState("");
-	const [signature, setSignature] = useState("");
+	const [signature, setSignature] = useState(signMessageData.signature);
 	const [signatureOpacity] = useState(new Animated.Value(0));
-	const [selectedAddressIndex, setSelectedAddressIndex] = useState(0);
 	const [displayAddressModal, setDisplayAddressModal] = useState(false);
 	
 	const _signMessage = async () => {
 		try {
 			const signMessageResponse = await signMessage(
 				{
-					message,
+					message: signMessageData.message,
 					addressType,
-					path: addresses[selectedAddressIndex].path,
+					path: addresses[signMessageData.selectedAddressIndex].path,
 					selectedWallet,
 					selectedCrypto
 				});
 			if (!signMessageResponse.error) {
+				updateSettings({ signMessage: { message: signMessageData.message, signature: signMessageResponse.data.signature, selectedAddressIndex: signMessageData.selectedAddressIndex } });
 				setSignature(signMessageResponse.data.signature);
 				Animated.timing(
 					signatureOpacity,
@@ -67,20 +78,20 @@ const _SignMessage = (
 					}
 				).start();
 			}
-			console.log(signMessageResponse);
+			if (__DEV__) console.log(signMessageResponse);
 		} catch (e) {}
 	};
 	
 	let shareTitle = "My Signature.";
 	try {shareTitle = `My ${capitalize(selectedCrypto)} Signature.`;} catch(e) {}
-	let shareMessage = `Address: ${addresses[selectedAddressIndex].address}\n\n Message: ${message}\n\n Signature: ${signature}`;
+	let shareMessage = `Address: ${addresses[signMessageData.selectedAddressIndex].address}\n\n Message: ${signMessageData.message}\n\n Signature: ${signature}`;
 	
 	let path = getBaseDerivationPath({ keyDerivationPath: derivationPath, selectedCrypto });
-	try {path = addresses[selectedAddressIndex].path;} catch (e) {}
+	try {path = addresses[signMessageData.selectedAddressIndex].path;} catch (e) {}
 	
 	let shortendAddress = "";
 	try {
-		const address = addresses[selectedAddressIndex].address;
+		const address = addresses[signMessageData.selectedAddressIndex].address;
 		const addressLength = address.length;
 		shortendAddress = `${address.substr(0,10)}...${address.substr(addressLength-10,addressLength)}`;
 	} catch (e) {}
@@ -114,8 +125,8 @@ const _SignMessage = (
 					autoCapitalize="none"
 					autoCompleteType="off"
 					autoCorrect={false}
-					onChangeText={(message) => setMessage(message)}
-					value={message}
+					onChangeText={(message) => updateSettings({ signMessage: { ...signMessageData, message }})}
+					value={signMessageData.message}
 					multiline={true}
 				/>
 				
@@ -136,12 +147,12 @@ const _SignMessage = (
 				
 				<View style={{ paddingVertical: 10 }} />
 				<Animated.View style={styles.sendButton}>
-					<Button title="Sign Message" onPress={_signMessage} disabled={!message}/>
+					<Button title="Sign Message" onPress={_signMessage} disabled={!signMessageData.message} />
 				</Animated.View>
 			</View>
 			
 			<Animated.View style={styles.xButton}>
-				<XButton style={{borderColor: "transparent"}} onPress={onBack}/>
+				<XButton style={{borderColor: "transparent"}} onPress={onBack} />
 			</Animated.View>
 			
 			<DefaultModal
@@ -154,7 +165,7 @@ const _SignMessage = (
 						key={`${address}${i}`}
 						style={styles.pathRow}
 						onPress={() => {
-							setSelectedAddressIndex(i);
+							updateSettings({ signMessage: { ...signMessageData, selectedAddressIndex: i } });
 							setDisplayAddressModal(false);
 						}}
 					>
@@ -173,7 +184,13 @@ _SignMessage.propTypes = {
 	selectedWallet: PropTypes.string.isRequired,
 	derivationPath: PropTypes.string.isRequired,
 	addressType: PropTypes.string.isRequired,
-	addresses: PropTypes.array.isRequired
+	addresses: PropTypes.array.isRequired,
+	signMessageData: PropTypes.shape({
+		message: PropTypes.string.isRequired,
+		signature: PropTypes.string.isRequired,
+		selectedAddressIndex: PropTypes.number.isRequired
+	}),
+	updateSettings: PropTypes.func.isRequired
 };
 
 const styles = StyleSheet.create({
@@ -199,12 +216,6 @@ const styles = StyleSheet.create({
 		justifyContent: "center",
 		color: colors.purple,
 		fontWeight: "bold"
-	},
-	centerItem: {
-		zIndex: 10,
-		alignItems: "center",
-		justifyContent: "center",
-		marginTop: 10
 	},
 	sendButton: {
 		alignItems: "center",
