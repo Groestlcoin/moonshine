@@ -166,7 +166,7 @@ const _CoinControl = (
 	const getAvailableToSpendText = () => {
 		try {
 			return `${coinData.crypto}: ${whiteListedUtxosBalance} ${coinData.acronym}`;
-		} catch (e) {return "BTC: 0 sats";}
+		} catch (e) {return "GRS: 0 gros";}
 	};
 	
 	//Sort utxos by confirmations.
