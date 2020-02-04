@@ -175,9 +175,9 @@ const getCoinImage = (coin = "groestlcoin") => {
 
 const getCoinData = ({ selectedCrypto = "groestlcoin", cryptoUnit = "satoshi" }) => {
 	try {
-		let acronym = "BTC";
-		let satoshi = "satoshi";
-		let oshi = "sats";
+		let acronym = "GRS";
+		let satoshi = "gro";
+		let oshi = "gros";
 		switch (selectedCrypto) {
 			case "bitcoin":
 				acronym = cryptoUnit === "satoshi" ? "sats" : "BTC";
@@ -199,15 +199,15 @@ const getCoinData = ({ selectedCrypto = "groestlcoin", cryptoUnit = "satoshi" })
 				return { acronym, label: "Litecoin Testnet", crypto: "LTC", satoshi, oshi };
 			case "groestlcoin":
 				acronym = cryptoUnit === "satoshi" ? "gros" : "GRS";
-				satoshi = gitoshi = "gros";
+				satoshi = oshi = "gros";
 				return { acronym, label: "Groestlcoin", crypto: "GRS", satoshi, oshi };
 			case "groestlcoinTestnet":
 				acronym = cryptoUnit === "satoshi" ? "gros" : "GRS";
 				satoshi = oshi = "gros";
 				return { acronym, label: "Groestlcoin Testnet", crypto: "GRS", satoshi, oshi };
 			default:
-				acronym = cryptoUnit === "satoshi" ? "sats" : "BTC";
-				return { acronym, label: "Bitcoin", crypto: "BTC", satoshi, oshi };
+				acronym = cryptoUnit === "satoshi" ? "gros" : "GRS";
+				return { acronym, label: "Groestlcoin", crypto: "GRS", satoshi, oshi };
 		}
 	} catch (e) {
 		console.log(e);
