@@ -52,7 +52,7 @@
     "electrum10.groestlcoin.org t50001 s50002"
   ],
   "groestlcoinTestnet": [
-    "electrum-test1.groestlcoin.org t51001 s51002",
-    "electrum-test2.groestlcoin.org t51001 s51002"
+    "electrum-test2.groestlcoin.org t51001 s51002",
+    "electrum-test1.groestlcoin.org t51001 s51002"
   ]
 }
