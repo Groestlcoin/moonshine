@@ -11,10 +11,7 @@ GRS Moonshine's alpha is available for testing on [iOS](https://testflight.apple
 
 > GRS Moonshine is a homebrewed, open-source, non-custodial, Groestlcoin Electrum wallet for iOS & Android.
 
-CAUTION: **Caution:**
-This app is still heavily in development. Please use at your own risk.
-
-Built with React Native, GRS Moonshine utilizes Electrum's JSON-RPC methods to interact with the Bitcoin/Litecoin network.
+Built with React Native, Moonshine utilizes Electrum-GRS's JSON-RPC methods to interact with the Groestlcoin network.
 
 GRS Moonshine's intended use is as a hot wallet.
 Meaning, your keys are only as safe as the device you install this wallet on.
@@ -32,29 +29,27 @@ If you are looking for secure cold storage solutions please consider purchasing 
 2. Start the project:
     - iOS: `react-native run-ios`
     - Android: `react-native run-android`
-### Feature Roadmap
-* Complete:
-    * Bitcoin/Litecoin Mainnet & Testnet supported
-    * Bech32 support
-    * Multiple wallet support
-    * Electrum
-        * Support for both random and custom peers
-    * Encrypted storage
-    * Biometric + Pin authentication
-    * Custom fee selection
-    * Import mnemonic phrases via manual entry or scanning
-    * RBF functionality
-    * Add BIP39 Passphrase functionality
-    * Add support for Segwit-compatible & legacy addresses in settings
-    * Allow users to select the key derivation path in settings
-    * Support individual private key sweeping
-    * UTXO blacklisting
-        * Accessible via the Transaction Detail view, this allows users to blacklist any utxo that they do not wish to include in their list of available utxo's when sending transactions. Blacklisting a utxo excludes it's amount from the wallet's total balance.
-    * Ability to Sign & Verify Messages
-    * Support BitID for passwordless authentication
-    * Coin Control
-        * This can be accessed from the Send Transaction view and basically allows users to select from a list of available UTXO's to include in their transaction.
-    * Broadcast raw transactions
+### Features
+* Bitcoin/Litecoin Mainnet & Testnet supported
+* Bech32 support
+* Multiple wallet support
+* Electrum
+    * Support for both random and custom peers
+* Encrypted storage
+* Biometric + Pin authentication
+* Custom fee selection
+* Import mnemonic phrases via manual entry or scanning
+* RBF functionality
+* BIP39 Passphrase functionality
+* Support for Segwit-compatible & legacy addresses in settings
+* Support individual private key sweeping
+* UTXO blacklisting
+    * Accessible via the Transaction Detail view, this allows users to blacklist any utxo that they do not wish to include in their list of available utxo's when sending transactions. Blacklisting a utxo excludes it's amount from the wallet's total balance.
+* Ability to Sign & Verify Messages
+* Support BitID for passwordless authentication
+* Coin Control
+    * This can be accessed from the Send Transaction view and basically allows users to select from a list of available UTXO's to include in their transaction.
+* Broadcast raw transactions
 
 For an up-to-date list of features that are in progress please refer to Moonshine's [issue page.](https://github.com/coreyphillips/moonshine/issues)
 If you do not see a feature that you want feel free to create a new issue requesting it or reach out at support@groestlcoin.org and let me know.
@@ -75,9 +70,9 @@ Please be aware and take note that my primary focus is on expanding the core fun
 
 ### Support
 
-Supported Derivation Paths: m/0' | 44' | 49' | 84' /0'/0'
+Supported Derivation Paths: m/44' | 49' | 84' /0'/0'
 
-Again, if you have any questions, feature requests, etc., please feel free to create an issue on [Github](https://github.com/coreyphillips/moonshine/issues), reach out to me on [Twitter](https://twitter.com/coreylphillips) or send an email to corey@ferrymanfin.com.
+Again, if you have any questions, feature requests, etc., please feel free to create an issue on [Github](https://github.com/coreyphillips/moonshine/issues), reach out to me on [Twitter](https://twitter.com/coreylphillips) or send an email to support@moonshinewallet.com.
 
 ### Donate
 
@@ -110,3 +105,4 @@ Distributed under the MIT license. See ``LICENSE`` for more information.
         * For providing the initial inspiration for the main UI of this app and for providing a wonderful guide/example of how to implement Lightning via Neutrino.
     * Testers!
         * Thank you for the encouragement, exceptional feedback and help troubleshooting throughout the development process. You are a large part of what makes this community great. Thank you!
+        * Special shoutout to the Groestlcoin team for their awesome help with QA and bug catching as they setup their own [fork.](https://github.com/Groestlcoin/moonshine/tree/grs)

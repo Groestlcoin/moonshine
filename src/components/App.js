@@ -20,6 +20,7 @@ import {
 	Easing,
 	Linking
 } from "react-native";
+import SplashScreen from "react-native-splash-screen";
 import {systemWeights} from "react-native-typography";
 import EvilIcon from "react-native-vector-icons/EvilIcons";
 import Ionicons from "react-native-vector-icons/Ionicons";
@@ -953,7 +954,7 @@ export default class App extends Component {
 	
 	async componentDidMount() {
 		//This gets called after redux-persist rehydrates
-		
+		SplashScreen.hide();
 		await pauseExecution(100); //This helps to prevent a flicker on launch.
 		
 		//Spin up the nodejs thread
@@ -1949,6 +1950,8 @@ export default class App extends Component {
 										address={this.getNextAvailableAddress()}
 										selectedCrypto={this.props.wallet.selectedCrypto}
 										size={200}
+										exchangeRate={this.props.wallet.exchangeRate[this.props.wallet.selectedCrypto]}
+										cryptoUnit={this.props.settings.cryptoUnit}
 									/>
 								</Animated.View>}
 								
