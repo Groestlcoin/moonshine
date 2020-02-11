@@ -43,8 +43,6 @@ const _Welcome = ({ children }) => {
 				>
 					<Text style={styles.semiBoldText}>Email: </Text>support@groestlcoin.org
 				</Text>
-					<Text style={styles.semiBoldText}>Email: </Text>support@groestlcoin.org
-				</Text>
 			</View>
 		</View>
 	);
