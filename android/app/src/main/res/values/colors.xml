@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="status_bar_color">#57158f</color>
-    <color name="purple">#631e9a</color>
-    <color name="darkPurple">#57158f</color>
-    <color name="primary_dark">#631e9a</color>
+    <color name="purple">#006593</color>
+    <color name="darkPurple">#005E78</color>
+    <color name="primary_dark">#006593</color>
 </resources>
