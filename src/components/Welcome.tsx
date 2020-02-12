@@ -15,11 +15,7 @@ const updates = [
 	"Fixed a typo that would occur when sweeping private keys."
 ];
 
-const showWelcome = false;
-
 const _Welcome = ({ children }) => {
-	if(!showWelcome)
-		return;
 
 	if (Platform.OS === "ios") useEffect(() => LayoutAnimation.easeInEaseOut());
 	return (
