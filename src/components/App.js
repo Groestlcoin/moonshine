@@ -291,7 +291,7 @@ export default class App extends Component {
 		}
 		
 		//Display Welcome modal if a new version has been released.
-		if (this.isNewVersion()) this.setState({ displayWelcomeModal: true });
+		//if (this.isNewVersion()) this.setState({ displayWelcomeModal: true });
 		
 		try {
 			const onBack = () => {
