@@ -45,7 +45,7 @@ const _TransactionRow = ({ id = "", coin = "groestlcoin", address = "", amount =
 		try {
 			//This prevents the view from displaying 0 BTC
 			if (amount < 50000 && cryptoUnit === "BTC") {
-				return `${formatNumber(Number((amount * 0.00000001).toFixed(8)))} BTC`;
+				return `${formatNumber(Number((amount * 0.00000001).toFixed(8)))} GRS`;
 			} else {
 				return `${formatNumber(bitcoinUnits(amount, "satoshi").to(cryptoUnit).value())} ${getCoinData({selectedCrypto: coin, cryptoUnit}).acronym}`;
 			}
