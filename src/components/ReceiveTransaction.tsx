@@ -41,7 +41,7 @@ interface FormatUri extends Default {
 	amount?: string, // Amount to request when formatting the URI
 	label?: string // Label to add to the URI
 }
-const formatUri = ({ selectedCrypto, address }: FormatUri = {
+const formatUri = ({ selectedCrypto, address, amount }: FormatUri = {
 	selectedCrypto: "groestlcoin", address: "", amount: ""
 }) => {
 	let coin = "groestlcoin";
