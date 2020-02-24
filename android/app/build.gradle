@@ -151,8 +151,8 @@ android {
         applicationId "org.groestlcoin.moonshine"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 38003
-        versionName "0.3.0-1"
+        versionCode 38104
+        versionName "0.3.0-2"
         multiDexEnabled true
         missingDimensionStrategy 'react-native-camera', 'general'
     }
