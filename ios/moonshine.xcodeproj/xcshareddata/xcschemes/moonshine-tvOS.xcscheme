@@ -29,7 +29,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "moonshine-tvOS.app"
+               BuildableName = "grs-moonshine-tvOS.app"
                BlueprintName = "moonshine-tvOS"
                ReferencedContainer = "container:moonshine.xcodeproj">
             </BuildableReference>
@@ -59,7 +59,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "moonshine-tvOS.app"
+            BuildableName = "grs-moonshine-tvOS.app"
             BlueprintName = "moonshine-tvOS"
             ReferencedContainer = "container:moonshine.xcodeproj">
          </BuildableReference>
@@ -92,7 +92,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "moonshine-tvOS.app"
+            BuildableName = "grs-moonshine-tvOS.app"
             BlueprintName = "moonshine-tvOS"
             ReferencedContainer = "container:moonshine.xcodeproj">
          </BuildableReference>
@@ -109,7 +109,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "moonshine-tvOS.app"
+            BuildableName = "grs-moonshine-tvOS.app"
             BlueprintName = "moonshine-tvOS"
             ReferencedContainer = "container:moonshine.xcodeproj">
          </BuildableReference>
